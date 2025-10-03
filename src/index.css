@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Reset and base styles */
 * {
   box-sizing: border-box;
@@ -5,7 +9,7 @@
 
 html {
   height: 100%;
-  background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 50%, #43e97b 100%);
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e40af 100%);
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
@@ -16,16 +20,18 @@ body {
   padding: 0;
   min-height: 100vh;
   height: 100%;
-  background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 50%, #43e97b 100%);
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e40af 100%);
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.87);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-text-stroke: 0.01em transparent;
 }
 
 #root {
@@ -89,6 +95,224 @@ button:focus-visible {
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Custom component overrides */
+.user-card {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  transition: all 0.2s ease;
+  display: block !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+}
+
+.user-card.selected {
+  background: rgba(74, 144, 226, 0.8) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.user-card:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  transform: translateY(-1px);
+}
+
+.user-card button {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  cursor: pointer !important;
+}
+
+/* Elegant button styling for UserSettings */
+.user-settings-modal {
+  z-index: 9999 !important;
+  position: fixed !important;
+  pointer-events: auto !important;
+  isolation: isolate !important;
+  transform: translateZ(0) !important;
+}
+
+.user-settings-modal * {
+  pointer-events: auto !important;
+  z-index: 10000 !important;
+  position: relative !important;
+}
+
+.user-settings-modal button {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  display: block !important;
+  min-width: 60px !important;
+  min-height: 32px !important;
+  font-weight: 500 !important;
+  padding: 8px 16px !important;
+  margin: 2px !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  transition: none !important;
+  backdrop-filter: none !important;
+  position: relative !important;
+  z-index: 10001 !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+
+.user-settings-modal button:hover {
+  background: linear-gradient(135deg, #3730a3 0%, #6d28d9 100%) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+  transform: none !important;
+}
+
+.user-settings-modal button:active {
+  transform: translateY(0) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.user-settings-modal button[disabled] {
+  background: linear-gradient(135deg, #6b7280 0%, #9ca3af 100%) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  opacity: 0.6 !important;
+  cursor: not-allowed !important;
+}
+
+/* Specific button types with elegant colors using classes - higher specificity */
+.user-settings-modal button.edit-button {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%) !important;
+  border: 1px solid rgba(59, 130, 246, 0.3) !important;
+}
+
+.user-settings-modal button.edit-button:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%) !important;
+  border-color: rgba(37, 99, 235, 0.5) !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+.user-settings-modal button.save-button {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+  border: 1px solid rgba(16, 185, 129, 0.3) !important;
+}
+
+.user-settings-modal button.save-button:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%) !important;
+  border-color: rgba(5, 150, 105, 0.5) !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+.user-settings-modal button.cancel-button {
+  background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%) !important;
+  border: 1px solid rgba(107, 114, 128, 0.3) !important;
+}
+
+.user-settings-modal button.cancel-button:hover {
+  background: linear-gradient(135deg, #4b5563 0%, #374151 100%) !important;
+  border-color: rgba(75, 85, 99, 0.5) !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+.user-settings-modal button.delete-button {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+  border: 1px solid rgba(239, 68, 68, 0.3) !important;
+}
+
+.user-settings-modal button.delete-button:hover {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%) !important;
+  border-color: rgba(220, 38, 38, 0.5) !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+.user-settings-modal button svg {
+  color: inherit !important;
+}
+
+/* Close button (X) styling - higher specificity */
+.user-settings-modal button.close-button {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  min-width: 32px !important;
+  min-height: 32px !important;
+  padding: 6px !important;
+  backdrop-filter: none !important;
+}
+
+.user-settings-modal button.close-button:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Ensure Edit button is not blurred */
+.user-settings-modal button.edit-button {
+  backdrop-filter: none !important;
+  filter: none !important;
+  transform: none !important;
+  will-change: auto !important;
+}
+
+/* Completely remove all backdrop blur effects */
+.user-settings-modal * {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+}
+
+.user-settings-modal {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+}
+
+.user-settings-modal button {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+}
+
+/* Removed conflicting rules */
+
+/* Simplified button overrides - ensure clickability */
+.user-settings-modal button.edit-button,
+.user-settings-modal button.save-button,
+.user-settings-modal button.cancel-button,
+.user-settings-modal button.delete-button,
+.user-settings-modal button.close-button {
+  position: relative !important;
+  z-index: 10001 !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+  transform: none !important;
+  will-change: auto !important;
+  transition: none !important;
+  animation: none !important;
+}
+
+/* Ensure all text and content is crisp */
+.user-settings-modal button * {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+  transform: none !important;
 }
 
 /* Light mode overrides */
