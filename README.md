@@ -6,7 +6,7 @@ A sleek and modern web application for tracking your Genshin Impact character pr
 
 - **Multi-User Support**: Create and manage multiple user profiles
 - **Character Database**: Complete database of all Genshin Impact characters
-- **Progress Tracking**: Track character status (Unowned, WIP, Built), constellation levels (C0-C6), and refinement levels (R0-R5)
+- **Progress Tracking**: Track character status (Unowned, WIP, Built), constellation levels (C0-C6), refinement levels (R0-R5), and weapon names
 - **Filtering & Sorting**: Filter by nation, vision, weapon, rarity, and status. Sort by any column
 - **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
 - **Modern UI**: Beautiful glassmorphism design with Genshin Impact-inspired colors
@@ -30,6 +30,7 @@ For each character, users can track:
   - Built (green) - Fully built character
 - **Constellation Level**: C0 through C6 (only available if not Unowned)
 - **Refinement Level**: R0 through R5 (only available if not Unowned)
+- **Weapon Name**: Custom weapon name for each character (only available if not Unowned, defaults to "N/A")
 
 ## Getting Started
 
@@ -74,6 +75,7 @@ To enable cloud synchronization:
 3. **Track Progress**: 
    - Use the status dropdown to mark characters as Unowned, WIP, or Built
    - Set constellation and refinement levels for owned characters
+   - Enter custom weapon names for each character
 4. **Filter & Sort**: Use the filter dropdowns to find specific characters
 5. **View Stats**: Check the summary cards to see your overall progress
 

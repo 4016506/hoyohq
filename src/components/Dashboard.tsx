@@ -65,10 +65,14 @@ export const Dashboard: React.FC = () => {
   const updateUserCharacter = async (characterId: string, updates: Partial<UserCharacter>) => {
     if (!currentUser) return;
 
+    const existingCharacter = currentUser.characters[characterId];
     const updatedCharacterData: UserCharacter = {
-      ...currentUser.characters[characterId],
-      ...updates,
-      characterId
+      characterId,
+      status: existingCharacter?.status || 'Unowned',
+      constellation: existingCharacter?.constellation || 0,
+      refinement: existingCharacter?.refinement || 0,
+      weaponName: existingCharacter?.weaponName || 'N/A',
+      ...updates
     };
 
     const updatedUser: User = {

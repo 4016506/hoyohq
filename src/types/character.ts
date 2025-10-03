@@ -18,6 +18,7 @@ export interface UserCharacter {
   status: Status;
   constellation: number;
   refinement: number;
+  weaponName: string;
 }
 
 export interface User {
