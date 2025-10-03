@@ -89,7 +89,6 @@ export const UserSettings: React.FC<UserSettingsProps> = ({
           const rect = e.currentTarget.getBoundingClientRect();
           const modalHeight = 200; // Approximate modal height
           const spaceBelow = window.innerHeight - rect.bottom;
-          const spaceAbove = rect.top;
           
           // Position below if there's enough space, otherwise above
           const top = spaceBelow >= modalHeight 
