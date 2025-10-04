@@ -20,7 +20,7 @@ export const CharacterTable: React.FC<CharacterTableProps> = ({
     rarity: '' as 4 | 5 | '',
     status: '' as Status | ''
   });
-  const [sortBy, setSortBy] = useState<keyof Character>('name');
+  const [sortBy, setSortBy] = useState<keyof Character>('version');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
   const [localWeaponNames, setLocalWeaponNames] = useState<Record<string, string>>({});
   const debounceTimeouts = useRef<Record<string, NodeJS.Timeout>>({});
@@ -216,6 +216,12 @@ export const CharacterTable: React.FC<CharacterTableProps> = ({
               <th className="px-3 md:px-6 py-3 md:py-4 text-left text-white font-semibold text-sm md:text-base">Constellation</th>
               <th className="px-3 md:px-6 py-3 md:py-4 text-left text-white font-semibold text-sm md:text-base">Weapon Name</th>
               <th className="px-3 md:px-6 py-3 md:py-4 text-left text-white font-semibold text-sm md:text-base">Refinement</th>
+              <th 
+                className="px-3 md:px-6 py-3 md:py-4 text-left text-white font-semibold cursor-pointer hover:bg-white/20 transition-colors text-sm md:text-base"
+                onClick={() => handleSort('version')}
+              >
+                Version {sortBy === 'version' && (sortOrder === 'asc' ? '↑' : '↓')}
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -289,6 +295,9 @@ export const CharacterTable: React.FC<CharacterTableProps> = ({
                         ))}
                       </select>
                     )}
+                  </td>
+                  <td className="px-3 md:px-6 py-3 md:py-4 text-white text-sm md:text-base">
+                    {character.version.toFixed(1)}
                   </td>
                 </tr>
               );

@@ -1,4 +1,4 @@
-export type Nation = "Mondstadt" | "Liyue" | "Inazuma" | "Sumeru" | "Fontaine" | "Natlan" | "Nod-Krai";
+export type Nation = "Mondstadt" | "Liyue" | "Inazuma" | "Sumeru" | "Fontaine" | "Natlan" | "Nod-Krai" | "N/A";
 export type Element = "Pyro" | "Hydro" | "Cryo" | "Dendro" | "Electro" | "Anemo" | "Geo";
 export type Weapon = "Bow" | "Sword" | "Catalyst" | "Claymore" | "Polearm";
 export type Rarity = 4 | 5;
@@ -11,6 +11,7 @@ export interface Character {
   nation: Nation;
   element: Element;
   weapon: Weapon;
+  version: number;
 }
 
 export interface UserCharacter {
