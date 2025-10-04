@@ -4,6 +4,7 @@ import { CHARACTERS } from '../data/characters';
 import { UserSelector } from './UserSelector';
 import { CharacterTable } from './CharacterTable';
 import { ResetButton } from './ResetButton';
+import { GameTabNavigation } from './GameTabNavigation';
 import { saveUser, getAllUsers, updateUserCharacter as updateUserCharacterFirebase } from '../services/firebaseService';
 
 export const Dashboard: React.FC = () => {
@@ -146,13 +147,16 @@ export const Dashboard: React.FC = () => {
   return (
     <div className="min-h-screen p-4 md:p-8">
       <div className="max-w-7xl mx-auto">
+        {/* Game Tab Navigation */}
+        <GameTabNavigation />
+        
         {/* Header */}
         <div className="text-center mb-6 md:mb-8">
           <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold text-white mb-2 md:mb-4 bg-gradient-to-r from-yellow-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
-            Genshin Impact
+            HOYO HQ
           </h1>
           <p className="text-lg md:text-xl text-white/80">
-            Character Progress Tracker
+            Three friends, two games, one dream.
           </p>
           {/* Test button */}
           {users.length === 0 && (
