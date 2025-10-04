@@ -212,9 +212,9 @@ export const CharacterTable: React.FC<CharacterTableProps> = ({
               >
                 Weapon {sortBy === 'weapon' && (sortOrder === 'asc' ? '↑' : '↓')}
               </th>
-              <th className="px-3 md:px-6 py-3 md:py-4 text-left text-white font-semibold text-sm md:text-base">Weapon Name</th>
               <th className="px-3 md:px-6 py-3 md:py-4 text-left text-white font-semibold text-sm md:text-base">Status</th>
               <th className="px-3 md:px-6 py-3 md:py-4 text-left text-white font-semibold text-sm md:text-base">Constellation</th>
+              <th className="px-3 md:px-6 py-3 md:py-4 text-left text-white font-semibold text-sm md:text-base">Weapon Name</th>
               <th className="px-3 md:px-6 py-3 md:py-4 text-left text-white font-semibold text-sm md:text-base">Refinement</th>
             </tr>
           </thead>
@@ -241,19 +241,6 @@ export const CharacterTable: React.FC<CharacterTableProps> = ({
                   </td>
                   <td className="px-3 md:px-6 py-3 md:py-4 text-white text-sm md:text-base hidden lg:table-cell">{character.weapon}</td>
                   <td className="px-3 md:px-6 py-3 md:py-4">
-                    {!isUnowned ? (
-                      <input
-                        type="text"
-                        value={getWeaponNameValue(character.id, userChar)}
-                        onChange={(e) => handleWeaponNameChange(character.id, e.target.value)}
-                        placeholder="Enter weapon name"
-                        className="px-2 md:px-3 py-1 rounded-lg text-xs md:text-sm font-medium bg-white/20 border border-white/30 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-genshin-blue w-full min-w-[120px]"
-                      />
-                    ) : (
-                      <span className="text-gray-400 text-xs md:text-sm">--</span>
-                    )}
-                  </td>
-                  <td className="px-3 md:px-6 py-3 md:py-4">
                     <select
                       value={userChar.status}
                       onChange={(e) => updateCharacter(character.id, { status: e.target.value as Status })}
@@ -275,6 +262,19 @@ export const CharacterTable: React.FC<CharacterTableProps> = ({
                           <option key={num} value={num}>C{num}</option>
                         ))}
                       </select>
+                    )}
+                  </td>
+                  <td className="px-3 md:px-6 py-3 md:py-4">
+                    {!isUnowned ? (
+                      <input
+                        type="text"
+                        value={getWeaponNameValue(character.id, userChar)}
+                        onChange={(e) => handleWeaponNameChange(character.id, e.target.value)}
+                        placeholder="Enter weapon name"
+                        className="px-2 md:px-3 py-1 rounded-lg text-xs md:text-sm font-medium bg-white/20 border border-white/30 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-genshin-blue w-full min-w-[120px]"
+                      />
+                    ) : (
+                      <span className="text-gray-400 text-xs md:text-sm">--</span>
                     )}
                   </td>
                   <td className="px-3 md:px-6 py-3 md:py-4">
