@@ -48,10 +48,6 @@ export const UserSelector: React.FC<UserSelectorProps> = ({
       <h2 className="text-2xl font-bold text-white mb-4 text-center">
         Select User
       </h2>
-      {/* Debug info */}
-      <div className="text-xs text-white/50 mb-2">
-        Debug: {users.length} users, current: {currentUser?.name || 'none'}, showForm: {showCreateForm.toString()}, newName: "{newUserName}"
-      </div>
       
       <div className="space-y-3 mb-6">
         {users.length === 0 ? (
