@@ -1,0 +1,222 @@
+name,type,rarity,icon_path
+A Thousand Blazing Suns,Claymore,5,../images/weapon_icons/a_thousand_blazing_suns.png
+A Thousand Floating Dreams,Catalyst,5,../images/weapon_icons/a_thousand_floating_dreams.png
+Absolution,Sword,5,../images/weapon_icons/absolution.png
+Amos' Bow,Bow,5,../images/weapon_icons/amos'_bow.png
+Aqua Simulacra,Bow,5,../images/weapon_icons/aqua_simulacra.png
+Aquila Favonia,Sword,5,../images/weapon_icons/aquila_favonia.png
+Astral Vulture's Crimson Plumage,Bow,5,../images/weapon_icons/astral_vulture's_crimson_plumage.png
+Azurelight,Sword,5,../images/weapon_icons/azurelight.png
+Beacon of the Reed Sea,Claymore,5,../images/weapon_icons/beacon_of_the_reed_sea.png
+Bloodsoaked Ruins,Polearm,5,../images/weapon_icons/bloodsoaked_ruins.png
+Calamity Queller,Polearm,5,../images/weapon_icons/calamity_queller.png
+Cashflow Supervision,Catalyst,5,../images/weapon_icons/cashflow_supervision.png
+Crane's Echoing Call,Catalyst,5,../images/weapon_icons/crane's_echoing_call.png
+Crimson Moon's Semblance,Polearm,5,../images/weapon_icons/crimson_moon's_semblance.png
+Elegy for the End,Bow,5,../images/weapon_icons/elegy_for_the_end.png
+Engulfing Lightning,Polearm,5,../images/weapon_icons/engulfing_lightning.png
+Everlasting Moonglow,Catalyst,5,../images/weapon_icons/everlasting_moonglow.png
+Fang of the Mountain King,Claymore,5,../images/weapon_icons/fang_of_the_mountain_king.png
+Fractured Halo,Polearm,5,../images/weapon_icons/fractured_halo.png
+Freedom-Sworn,Sword,5,../images/weapon_icons/freedom-sworn.png
+Haran Geppaku Futsu,Sword,5,../images/weapon_icons/haran_geppaku_futsu.png
+Hunter's Path,Bow,5,../images/weapon_icons/hunter's_path.png
+Jadefall's Splendor,Catalyst,5,../images/weapon_icons/jadefall's_splendor.png
+Kagura's Verity,Catalyst,5,../images/weapon_icons/kagura's_verity.png
+Key of Khaj-Nisut,Sword,5,../images/weapon_icons/key_of_khaj-nisut.png
+Light of Foliar Incision,Sword,5,../images/weapon_icons/light_of_foliar_incision.png
+Lost Prayer to the Sacred Winds,Catalyst,5,../images/weapon_icons/lost_prayer_to_the_sacred_winds.png
+Lumidouce Elegy,Polearm,5,../images/weapon_icons/lumidouce_elegy.png
+Memory of Dust,Catalyst,5,../images/weapon_icons/memory_of_dust.png
+Mistsplitter Reforged,Sword,5,../images/weapon_icons/mistsplitter_reforged.png
+Nightweaver's Looking Glass,Catalyst,5,../images/weapon_icons/nightweaver's_looking_glass.png
+Peak Patrol Song,Sword,5,../images/weapon_icons/peak_patrol_song.png
+Polar Star,Bow,5,../images/weapon_icons/polar_star.png
+Primordial Jade Cutter,Sword,5,../images/weapon_icons/primordial_jade_cutter.png
+Primordial Jade Winged-Spear,Polearm,5,../images/weapon_icons/primordial_jade_winged-spear.png
+Redhorn Stonethresher,Claymore,5,../images/weapon_icons/redhorn_stonethresher.png
+Silvershower Heartstrings,Bow,5,../images/weapon_icons/silvershower_heartstrings.png
+Skyward Atlas,Catalyst,5,../images/weapon_icons/skyward_atlas.png
+Skyward Blade,Sword,5,../images/weapon_icons/skyward_blade.png
+Skyward Harp,Bow,5,../images/weapon_icons/skyward_harp.png
+Skyward Pride,Claymore,5,../images/weapon_icons/skyward_pride.png
+Skyward Spine,Polearm,5,../images/weapon_icons/skyward_spine.png
+Song of Broken Pines,Claymore,5,../images/weapon_icons/song_of_broken_pines.png
+Splendor of Tranquil Waters,Sword,5,../images/weapon_icons/splendor_of_tranquil_waters.png
+Staff of Homa,Polearm,5,../images/weapon_icons/staff_of_homa.png
+Staff of the Scarlet Sands,Polearm,5,../images/weapon_icons/staff_of_the_scarlet_sands.png
+Starcaller's Watch,Catalyst,5,../images/weapon_icons/starcaller's_watch.png
+Summit Shaper,Sword,5,../images/weapon_icons/summit_shaper.png
+Sunny Morning Sleep-In,Catalyst,5,../images/weapon_icons/sunny_morning_sleep-in.png
+Surf's Up,Catalyst,5,../images/weapon_icons/surf's_up.png
+Symphonist of Scents,Polearm,5,../images/weapon_icons/symphonist_of_scents.png
+The First Great Magic,Bow,5,../images/weapon_icons/the_first_great_magic.png
+The Unforged,Claymore,5,../images/weapon_icons/the_unforged.png
+Thundering Pulse,Bow,5,../images/weapon_icons/thundering_pulse.png
+Tome of the Eternal Flow,Catalyst,5,../images/weapon_icons/tome_of_the_eternal_flow.png
+Tulaytullah's Remembrance,Catalyst,5,../images/weapon_icons/tulaytullah's_remembrance.png
+Uraku Misugiri,Sword,5,../images/weapon_icons/uraku_misugiri.png
+Verdict,Claymore,5,../images/weapon_icons/verdict.png
+Vivid Notions,Catalyst,5,../images/weapon_icons/vivid_notions.png
+Vortex Vanquisher,Polearm,5,../images/weapon_icons/vortex_vanquisher.png
+Wolf's Gravestone,Claymore,5,../images/weapon_icons/wolf's_gravestone.png
+"""The Catch""",Polearm,4,../images/weapon_icons/the_catch.png
+"""Ultimate Overlord's Mega Magic Sword""",Claymore,4,../images/weapon_icons/ultimate_overlord's_mega_magic_sword.png
+Akuoumaru,Claymore,4,../images/weapon_icons/akuoumaru.png
+Alley Hunter,Bow,4,../images/weapon_icons/alley_hunter.png
+Amenoma Kageuchi,Sword,4,../images/weapon_icons/amenoma_kageuchi.png
+Ash-Graven Drinking Horn,Catalyst,4,../images/weapon_icons/ash-graven_drinking_horn.png
+Ballad of the Boundless Blue,Catalyst,4,../images/weapon_icons/ballad_of_the_boundless_blue.png
+Ballad of the Fjords,Polearm,4,../images/weapon_icons/ballad_of_the_fjords.png
+Blackcliff Agate,Catalyst,4,../images/weapon_icons/blackcliff_agate.png
+Blackcliff Longsword,Sword,4,../images/weapon_icons/blackcliff_longsword.png
+Blackcliff Pole,Polearm,4,../images/weapon_icons/blackcliff_pole.png
+Blackcliff Slasher,Claymore,4,../images/weapon_icons/blackcliff_slasher.png
+Blackcliff Warbow,Bow,4,../images/weapon_icons/blackcliff_warbow.png
+Blackmarrow Lantern,Catalyst,4,../images/weapon_icons/blackmarrow_lantern.png
+Calamity of Eshu,Sword,4,../images/weapon_icons/calamity_of_eshu.png
+Chain Breaker,Bow,4,../images/weapon_icons/chain_breaker.png
+Cinnabar Spindle,Sword,4,../images/weapon_icons/cinnabar_spindle.png
+Cloudforged,Bow,4,../images/weapon_icons/cloudforged.png
+Compound Bow,Bow,4,../images/weapon_icons/compound_bow.png
+Crescent Pike,Polearm,4,../images/weapon_icons/crescent_pike.png
+Deathmatch,Polearm,4,../images/weapon_icons/deathmatch.png
+Dialogues of the Desert Sages,Polearm,4,../images/weapon_icons/dialogues_of_the_desert_sages.png
+Dodoco Tales,Catalyst,4,../images/weapon_icons/dodoco_tales.png
+Dragon's Bane,Polearm,4,../images/weapon_icons/dragon's_bane.png
+Dragonspine Spear,Polearm,4,../images/weapon_icons/dragonspine_spear.png
+Earth Shaker,Claymore,4,../images/weapon_icons/earth_shaker.png
+End of the Line,Bow,4,../images/weapon_icons/end_of_the_line.png
+Etherlight Spindlelute,Catalyst,4,../images/weapon_icons/etherlight_spindlelute.png
+Eye of Perception,Catalyst,4,../images/weapon_icons/eye_of_perception.png
+Fading Twilight,Bow,4,../images/weapon_icons/fading_twilight.png
+Favonius Codex,Catalyst,4,../images/weapon_icons/favonius_codex.png
+Favonius Greatsword,Claymore,4,../images/weapon_icons/favonius_greatsword.png
+Favonius Lance,Polearm,4,../images/weapon_icons/favonius_lance.png
+Favonius Sword,Sword,4,../images/weapon_icons/favonius_sword.png
+Favonius Warbow,Bow,4,../images/weapon_icons/favonius_warbow.png
+Festering Desire,Sword,4,../images/weapon_icons/festering_desire.png
+Finale of the Deep,Sword,4,../images/weapon_icons/finale_of_the_deep.png
+Flame-Forged Insight,Claymore,4,../images/weapon_icons/flame-forged_insight.png
+Fleuve Cendre Ferryman,Sword,4,../images/weapon_icons/fleuve_cendre_ferryman.png
+Flower-Wreathed Feathers,Bow,4,../images/weapon_icons/flower-wreathed_feathers.png
+Flowing Purity,Catalyst,4,../images/weapon_icons/flowing_purity.png
+Flute of Ezpitzal,Sword,4,../images/weapon_icons/flute_of_ezpitzal.png
+Footprint of the Rainbow,Polearm,4,../images/weapon_icons/footprint_of_the_rainbow.png
+Forest Regalia,Claymore,4,../images/weapon_icons/forest_regalia.png
+Frostbearer,Catalyst,4,../images/weapon_icons/frostbearer.png
+Fruit of Fulfillment,Catalyst,4,../images/weapon_icons/fruit_of_fulfillment.png
+Fruitful Hook,Claymore,4,../images/weapon_icons/fruitful_hook.png
+Hakushin Ring,Catalyst,4,../images/weapon_icons/hakushin_ring.png
+Hamayumi,Bow,4,../images/weapon_icons/hamayumi.png
+Ibis Piercer,Bow,4,../images/weapon_icons/ibis_piercer.png
+Iron Sting,Sword,4,../images/weapon_icons/iron_sting.png
+Kagotsurube Isshin,Sword,4,../images/weapon_icons/kagotsurube_isshin.png
+Katsuragikiri Nagamasa,Claymore,4,../images/weapon_icons/katsuragikiri_nagamasa.png
+King's Squire,Bow,4,../images/weapon_icons/king's_squire.png
+Kitain Cross Spear,Polearm,4,../images/weapon_icons/kitain_cross_spear.png
+Lion's Roar,Sword,4,../images/weapon_icons/lion's_roar.png
+Lithic Blade,Claymore,4,../images/weapon_icons/lithic_blade.png
+Lithic Spear,Polearm,4,../images/weapon_icons/lithic_spear.png
+Luxurious Sea-Lord,Claymore,4,../images/weapon_icons/luxurious_sea-lord.png
+Mailed Flower,Claymore,4,../images/weapon_icons/mailed_flower.png
+Makhaira Aquamarine,Claymore,4,../images/weapon_icons/makhaira_aquamarine.png
+Mappa Mare,Catalyst,4,../images/weapon_icons/mappa_mare.png
+Master Key,Claymore,4,../images/weapon_icons/master_key.png
+Missive Windspear,Polearm,4,../images/weapon_icons/missive_windspear.png
+Mitternachts Waltz,Bow,4,../images/weapon_icons/mitternachts_waltz.png
+Moonpiercer,Polearm,4,../images/weapon_icons/moonpiercer.png
+Moonweaver's Dawn,Sword,4,../images/weapon_icons/moonweaver's_dawn.png
+Mountain-Bracing Bolt,Polearm,4,../images/weapon_icons/mountain-bracing_bolt.png
+Mouun's Moon,Bow,4,../images/weapon_icons/mouun's_moon.png
+Oathsworn Eye,Catalyst,4,../images/weapon_icons/oathsworn_eye.png
+Portable Power Saw,Claymore,4,../images/weapon_icons/portable_power_saw.png
+Predator,Bow,4,../images/weapon_icons/predator.png
+Prospector's Drill,Polearm,4,../images/weapon_icons/prospector's_drill.png
+Prospector's Shovel,Polearm,4,../images/weapon_icons/prospector's_shovel.png
+Prototype Amber,Catalyst,4,../images/weapon_icons/prototype_amber.png
+Prototype Archaic,Claymore,4,../images/weapon_icons/prototype_archaic.png
+Prototype Crescent,Bow,4,../images/weapon_icons/prototype_crescent.png
+Prototype Rancour,Sword,4,../images/weapon_icons/prototype_rancour.png
+Prototype Starglitter,Polearm,4,../images/weapon_icons/prototype_starglitter.png
+Rainslasher,Claymore,4,../images/weapon_icons/rainslasher.png
+Range Gauge,Bow,4,../images/weapon_icons/range_gauge.png
+Rightful Reward,Polearm,4,../images/weapon_icons/rightful_reward.png
+Ring of Yaxche,Catalyst,4,../images/weapon_icons/ring_of_yaxche.png
+Royal Bow,Bow,4,../images/weapon_icons/royal_bow.png
+Royal Greatsword,Claymore,4,../images/weapon_icons/royal_greatsword.png
+Royal Grimoire,Catalyst,4,../images/weapon_icons/royal_grimoire.png
+Royal Longsword,Sword,4,../images/weapon_icons/royal_longsword.png
+Royal Spear,Polearm,4,../images/weapon_icons/royal_spear.png
+Rust,Bow,4,../images/weapon_icons/rust.png
+Sacrificial Bow,Bow,4,../images/weapon_icons/sacrificial_bow.png
+Sacrificial Fragments,Catalyst,4,../images/weapon_icons/sacrificial_fragments.png
+Sacrificial Greatsword,Claymore,4,../images/weapon_icons/sacrificial_greatsword.png
+Sacrificial Jade,Catalyst,4,../images/weapon_icons/sacrificial_jade.png
+Sacrificial Sword,Sword,4,../images/weapon_icons/sacrificial_sword.png
+Sapwood Blade,Sword,4,../images/weapon_icons/sapwood_blade.png
+Scion of the Blazing Sun,Bow,4,../images/weapon_icons/scion_of_the_blazing_sun.png
+Sequence of Solitude,Bow,4,../images/weapon_icons/sequence_of_solitude.png
+Serenity's Call,Sword,4,../images/weapon_icons/serenity's_call.png
+Serpent Spine,Claymore,4,../images/weapon_icons/serpent_spine.png
+Snare Hook,Bow,4,../images/weapon_icons/snare_hook.png
+Snow-Tombed Starsilver,Claymore,4,../images/weapon_icons/snow-tombed_starsilver.png
+Solar Pearl,Catalyst,4,../images/weapon_icons/solar_pearl.png
+Song of Stillness,Bow,4,../images/weapon_icons/song_of_stillness.png
+Sturdy Bone,Sword,4,../images/weapon_icons/sturdy_bone.png
+Sword of Descension,Sword,4,../images/weapon_icons/sword_of_descension.png
+Sword of Narzissenkreuz,Sword,4,../images/weapon_icons/sword_of_narzissenkreuz.png
+Talking Stick,Claymore,4,../images/weapon_icons/talking_stick.png
+Tamayuratei no Ohanashi,Polearm,4,../images/weapon_icons/tamayuratei_no_ohanashi.png
+The Alley Flash,Sword,4,../images/weapon_icons/the_alley_flash.png
+The Bell,Claymore,4,../images/weapon_icons/the_bell.png
+The Black Sword,Sword,4,../images/weapon_icons/the_black_sword.png
+The Dockhand's Assistant,Sword,4,../images/weapon_icons/the_dockhand's_assistant.png
+The Flute,Sword,4,../images/weapon_icons/the_flute.png
+The Stringless,Bow,4,../images/weapon_icons/the_stringless.png
+The Viridescent Hunt,Bow,4,../images/weapon_icons/the_viridescent_hunt.png
+The Widsith,Catalyst,4,../images/weapon_icons/the_widsith.png
+Tidal Shadow,Claymore,4,../images/weapon_icons/tidal_shadow.png
+Toukabou Shigure,Sword,4,../images/weapon_icons/toukabou_shigure.png
+Wandering Evenstar,Catalyst,4,../images/weapon_icons/wandering_evenstar.png
+Wavebreaker's Fin,Polearm,4,../images/weapon_icons/wavebreaker's_fin.png
+Waveriding Whirl,Catalyst,4,../images/weapon_icons/waveriding_whirl.png
+Whiteblind,Claymore,4,../images/weapon_icons/whiteblind.png
+Windblume Ode,Bow,4,../images/weapon_icons/windblume_ode.png
+Wine and Song,Catalyst,4,../images/weapon_icons/wine_and_song.png
+Wolf-Fang,Sword,4,../images/weapon_icons/wolf-fang.png
+Xiphos' Moonlight,Sword,4,../images/weapon_icons/xiphos'_moonlight.png
+Black Tassel,Polearm,3,../images/weapon_icons/black_tassel.png
+Bloodtainted Greatsword,Claymore,3,../images/weapon_icons/bloodtainted_greatsword.png
+Cool Steel,Sword,3,../images/weapon_icons/cool_steel.png
+Dark Iron Sword,Sword,3,../images/weapon_icons/dark_iron_sword.png
+Debate Club,Claymore,3,../images/weapon_icons/debate_club.png
+Emerald Orb,Catalyst,3,../images/weapon_icons/emerald_orb.png
+Ferrous Shadow,Claymore,3,../images/weapon_icons/ferrous_shadow.png
+Fillet Blade,Sword,3,../images/weapon_icons/fillet_blade.png
+Halberd,Polearm,3,../images/weapon_icons/halberd.png
+Harbinger of Dawn,Sword,3,../images/weapon_icons/harbinger_of_dawn.png
+Magic Guide,Catalyst,3,../images/weapon_icons/magic_guide.png
+Messenger,Bow,3,../images/weapon_icons/messenger.png
+Otherworldly Story,Catalyst,3,../images/weapon_icons/otherworldly_story.png
+Raven Bow,Bow,3,../images/weapon_icons/raven_bow.png
+Recurve Bow,Bow,3,../images/weapon_icons/recurve_bow.png
+Sharpshooter's Oath,Bow,3,../images/weapon_icons/sharpshooter's_oath.png
+Skyrider Greatsword,Claymore,3,../images/weapon_icons/skyrider_greatsword.png
+Skyrider Sword,Sword,3,../images/weapon_icons/skyrider_sword.png
+Slingshot,Bow,3,../images/weapon_icons/slingshot.png
+Thrilling Tales of Dragon Slayers,Catalyst,3,../images/weapon_icons/thrilling_tales_of_dragon_slayers.png
+Traveler's Handy Sword,Sword,3,../images/weapon_icons/traveler's_handy_sword.png
+Twin Nephrite,Catalyst,3,../images/weapon_icons/twin_nephrite.png
+White Iron Greatsword,Claymore,3,../images/weapon_icons/white_iron_greatsword.png
+White Tassel,Polearm,3,../images/weapon_icons/white_tassel.png
+Iron Point,Polearm,2,../images/weapon_icons/iron_point.png
+Old Merc's Pal,Claymore,2,../images/weapon_icons/old_merc's_pal.png
+Pocket Grimoire,Catalyst,2,../images/weapon_icons/pocket_grimoire.png
+Seasoned Hunter's Bow,Bow,2,../images/weapon_icons/seasoned_hunter's_bow.png
+Silver Sword,Sword,2,../images/weapon_icons/silver_sword.png
+Apprentice's Notes,Catalyst,1,../images/weapon_icons/apprentice's_notes.png
+Beginner's Protector,Polearm,1,../images/weapon_icons/beginner's_protector.png
+Dull Blade,Sword,1,../images/weapon_icons/dull_blade.png
+Hunter's Bow,Bow,1,../images/weapon_icons/hunter's_bow.png
+Waster Greatsword,Claymore,1,../images/weapon_icons/waster_greatsword.png
