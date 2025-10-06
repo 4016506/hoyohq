@@ -1,7 +1,8 @@
-import React, { useState, useMemo, useRef } from 'react';
+import React, { useState, useMemo } from 'react';
 import type { Character, User, UserCharacter, Nation, Element, Weapon, Status } from '../types/character';
 import { ELEMENT_COLORS, ELEMENT_TEXT_COLORS } from '../types/character';
 import { CustomDropdown } from './CustomDropdown';
+import { WeaponSelector } from './WeaponSelector';
 
 interface CharacterTableProps {
   characters: Character[];
@@ -23,8 +24,6 @@ export const CharacterTable: React.FC<CharacterTableProps> = ({
   });
   const [sortBy, setSortBy] = useState<keyof Character>('version');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
-  const [localWeaponNames, setLocalWeaponNames] = useState<Record<string, string>>({});
-  const debounceTimeouts = useRef<Record<string, NodeJS.Timeout>>({});
 
   const filteredAndSortedCharacters = useMemo(() => {
     let filtered = characters.filter(char => {
@@ -85,32 +84,6 @@ export const CharacterTable: React.FC<CharacterTableProps> = ({
 
   const updateCharacter = (characterId: string, updates: Partial<UserCharacter>) => {
     onUpdateUserCharacter(characterId, updates);
-  };
-
-  const handleWeaponNameChange = (characterId: string, value: string) => {
-    // Update local state immediately for responsive UI
-    setLocalWeaponNames(prev => ({
-      ...prev,
-      [characterId]: value
-    }));
-
-    // Clear existing timeout for this character
-    if (debounceTimeouts.current[characterId]) {
-      clearTimeout(debounceTimeouts.current[characterId]);
-    }
-
-    // Set new timeout for debounced update
-    debounceTimeouts.current[characterId] = setTimeout(() => {
-      onUpdateUserCharacter(characterId, { weaponName: value });
-      // Clean up the timeout reference
-      delete debounceTimeouts.current[characterId];
-    }, 500); // 500ms delay
-  };
-
-  const getWeaponNameValue = (characterId: string, userChar: UserCharacter) => {
-    return localWeaponNames[characterId] !== undefined 
-      ? localWeaponNames[characterId] 
-      : userChar.weaponName;
   };
 
   return (
@@ -279,12 +252,11 @@ export const CharacterTable: React.FC<CharacterTableProps> = ({
                   </td>
                   <td className="px-3 md:px-6 py-3 md:py-4">
                     {!isUnowned ? (
-                      <input
-                        type="text"
-                        value={getWeaponNameValue(character.id, userChar)}
-                        onChange={(e) => handleWeaponNameChange(character.id, e.target.value)}
-                        placeholder="Enter weapon name"
-                        className="px-2 md:px-3 py-1 rounded-lg text-xs md:text-sm font-medium bg-white/20 border border-white/30 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-genshin-blue w-full min-w-[120px]"
+                      <WeaponSelector
+                        weaponType={character.weapon}
+                        selectedWeaponName={userChar.weaponName}
+                        onChange={(weaponName) => updateCharacter(character.id, { weaponName })}
+                        className="min-w-[200px]"
                       />
                     ) : (
                       <span className="text-gray-400 text-xs md:text-sm">--</span>
