@@ -5,26 +5,38 @@ import { HSRUserSelector } from './HSRUserSelector';
 import { HSRCharacterTable } from './HSRCharacterTable';
 import { ResetButton } from './ResetButton';
 import { GameTabNavigation } from './GameTabNavigation';
+import { saveHSRUser, getAllHSRUsers, updateHSRUserCharacter as updateHSRUserCharacterFirebase } from '../services/firebaseService';
 
 export const HSRDashboard: React.FC = () => {
   const [users, setUsers] = useState<HSRUser[]>([]);
   const [currentUser, setCurrentUser] = useState<HSRUser | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Load users from localStorage on component mount
+  // Load users from Firebase on component mount
   useEffect(() => {
     const loadUsers = async () => {
       try {
+        console.log('Attempting to load HSR users from Firebase...');
+        const firebaseUsers = await getAllHSRUsers();
+        console.log('Firebase HSR users loaded:', firebaseUsers);
+        setUsers(firebaseUsers);
+        // Set the first user as current if none is selected
+        if (firebaseUsers.length > 0 && !currentUser) {
+          setCurrentUser(firebaseUsers[0]);
+        }
+      } catch (error) {
+        console.error('Error loading HSR users from Firebase:', error);
+        // Fallback to localStorage if Firebase fails
         const savedUsers = localStorage.getItem('hsr-users');
+        console.log('Checking localStorage for HSR users:', savedUsers);
         if (savedUsers) {
           const parsedUsers = JSON.parse(savedUsers);
+          console.log('Parsed localStorage HSR users:', parsedUsers);
           setUsers(parsedUsers);
           if (parsedUsers.length > 0 && !currentUser) {
             setCurrentUser(parsedUsers[0]);
           }
         }
-      } catch (error) {
-        console.error('Error loading users from localStorage:', error);
       }
       setIsLoading(false);
     };
@@ -32,72 +44,115 @@ export const HSRDashboard: React.FC = () => {
     loadUsers();
   }, []);
 
-  // Save users to localStorage whenever they change
+  // Save users to localStorage whenever they change (backup)
   useEffect(() => {
-    if (!isLoading) {
+    if (!isLoading && users.length > 0) {
       localStorage.setItem('hsr-users', JSON.stringify(users));
     }
   }, [users, isLoading]);
 
-  const createUser = (name: string) => {
+  const createUser = async (name: string) => {
     const newUser: HSRUser = {
-      id: `user-${Date.now()}`,
+      id: Date.now().toString(),
       name,
       characters: {}
     };
-
-    setUsers([...users, newUser]);
-    setCurrentUser(newUser);
-  };
-
-  const updateUserCharacter = (characterId: string, updates: Partial<HSRUserCharacter>) => {
-    if (!currentUser) return;
-
-    const updatedCharacters = {
-      ...currentUser.characters,
-      [characterId]: {
-        ...(currentUser.characters[characterId] || {
-          characterId,
-          status: 'Unowned',
-          eidolon: 0,
-          superposition: 0,
-          lightConeName: 'N/A'
-        }),
-        ...updates
-      }
-    };
-
-    const updatedUser = {
-      ...currentUser,
-      characters: updatedCharacters
-    };
-
-    setCurrentUser(updatedUser);
-    setUsers(users.map(u => u.id === updatedUser.id ? updatedUser : u));
-  };
-
-  const handleUserUpdate = (userId: string, newName: string) => {
-    const updatedUsers = users.map(user =>
-      user.id === userId ? { ...user, name: newName } : user
-    );
-    setUsers(updatedUsers);
     
-    if (currentUser?.id === userId) {
-      setCurrentUser({ ...currentUser, name: newName });
+    try {
+      await saveHSRUser(newUser);
+      setUsers(prev => [...prev, newUser]);
+      setCurrentUser(newUser);
+    } catch (error) {
+      console.error('Error saving HSR user to Firebase:', error);
+      // Fallback to local state if Firebase fails
+      setUsers(prev => [...prev, newUser]);
+      setCurrentUser(newUser);
     }
   };
 
-  const handleUserDelete = (userId: string) => {
-    const updatedUsers = users.filter(user => user.id !== userId);
-    setUsers(updatedUsers);
+  const updateUserCharacter = async (characterId: string, updates: Partial<HSRUserCharacter>) => {
+    if (!currentUser) return;
+
+    const existingCharacter = currentUser.characters[characterId];
+    const updatedCharacterData: HSRUserCharacter = {
+      characterId,
+      status: existingCharacter?.status || 'Unowned',
+      eidolon: existingCharacter?.eidolon || 0,
+      superposition: existingCharacter?.superposition || 0,
+      lightConeName: existingCharacter?.lightConeName || 'N/A',
+      ...updates
+    };
+
+    const updatedUser: HSRUser = {
+      ...currentUser,
+      characters: {
+        ...currentUser.characters,
+        [characterId]: updatedCharacterData
+      }
+    };
+
+    try {
+      await updateHSRUserCharacterFirebase(currentUser.id, characterId, updatedCharacterData);
+      setCurrentUser(updatedUser);
+      setUsers(prev => prev.map(user => 
+        user.id === currentUser.id ? updatedUser : user
+      ));
+    } catch (error) {
+      console.error('Error updating HSR character in Firebase:', error);
+      // Fallback to local state if Firebase fails
+      setCurrentUser(updatedUser);
+      setUsers(prev => prev.map(user => 
+        user.id === currentUser.id ? updatedUser : user
+      ));
+    }
+  };
+
+  const handleUserUpdate = async (userId: string, newName: string) => {
+    const updatedUsers = users.map(user =>
+      user.id === userId ? { ...user, name: newName } : user
+    );
     
-    if (currentUser?.id === userId) {
-      setCurrentUser(updatedUsers.length > 0 ? updatedUsers[0] : null);
+    const updatedUser = updatedUsers.find(u => u.id === userId);
+    if (updatedUser) {
+      try {
+        await saveHSRUser(updatedUser);
+        setUsers(updatedUsers);
+        if (currentUser?.id === userId) {
+          setCurrentUser({ ...currentUser, name: newName });
+        }
+      } catch (error) {
+        console.error('Error updating HSR user in Firebase:', error);
+        // Fallback to local state if Firebase fails
+        setUsers(updatedUsers);
+        if (currentUser?.id === userId) {
+          setCurrentUser({ ...currentUser, name: newName });
+        }
+      }
+    }
+  };
+
+  const handleUserDelete = async (userId: string) => {
+    try {
+      const { deleteHSRUser } = await import('../services/firebaseService');
+      await deleteHSRUser(userId);
+      setUsers(prev => prev.filter(user => user.id !== userId));
+      if (currentUser?.id === userId) {
+        const remainingUsers = users.filter(user => user.id !== userId);
+        setCurrentUser(remainingUsers.length > 0 ? remainingUsers[0] : null);
+      }
+    } catch (error) {
+      console.error('Error deleting HSR user from Firebase:', error);
+      // Fallback to local state if Firebase fails
+      setUsers(prev => prev.filter(user => user.id !== userId));
+      if (currentUser?.id === userId) {
+        const remainingUsers = users.filter(user => user.id !== userId);
+        setCurrentUser(remainingUsers.length > 0 ? remainingUsers[0] : null);
+      }
     }
   };
 
   const handleReset = () => {
-    if (window.confirm('Are you sure you want to reset ALL user data? This action cannot be undone.')) {
+    if (window.confirm('Are you sure you want to reset ALL HSR user data? This action cannot be undone.')) {
       localStorage.removeItem('hsr-users');
       setUsers([]);
       setCurrentUser(null);
