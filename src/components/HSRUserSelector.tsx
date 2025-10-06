@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import type { User } from '../types/character';
+import type { HSRUser } from '../types/hsr-character';
 import { CustomDropdown } from './CustomDropdown';
 
-interface UserSelectorProps {
-  users: User[];
-  currentUser: User | null;
-  onUserSelect: (user: User) => void;
+interface HSRUserSelectorProps {
+  users: HSRUser[];
+  currentUser: HSRUser | null;
+  onUserSelect: (user: HSRUser) => void;
   onUserCreate: (name: string) => void;
   onUserUpdate: (userId: string, newName: string) => void;
   onUserDelete: (userId: string) => void;
 }
 
-export const UserSelector: React.FC<UserSelectorProps> = ({
+export const HSRUserSelector: React.FC<HSRUserSelectorProps> = ({
   users,
   currentUser,
   onUserSelect,
@@ -195,3 +195,4 @@ export const UserSelector: React.FC<UserSelectorProps> = ({
     </div>
   );
 };
+

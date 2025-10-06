@@ -105,12 +105,14 @@ export const Dashboard: React.FC = () => {
     setCurrentUser(null);
   };
 
-  const handleUserUpdate = (updatedUser: User) => {
-    setUsers(prev => prev.map(user => 
-      user.id === updatedUser.id ? updatedUser : user
-    ));
-    if (currentUser?.id === updatedUser.id) {
-      setCurrentUser(updatedUser);
+  const handleUserUpdate = (userId: string, newName: string) => {
+    const updatedUsers = users.map(user =>
+      user.id === userId ? { ...user, name: newName } : user
+    );
+    setUsers(updatedUsers);
+    
+    if (currentUser?.id === userId) {
+      setCurrentUser({ ...currentUser, name: newName });
     }
   };
 
