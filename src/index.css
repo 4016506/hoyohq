@@ -167,9 +167,47 @@ button:focus-visible {
 
 .user-settings-modal button:hover {
   background: linear-gradient(135deg, #3730a3 0%, #6d28d9 100%) !important;
-  border-color: rgba(255, 255, 255, 0.3) !important;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
-  transform: none !important;
+}
+
+/* Custom dropdown styles for cross-platform compatibility */
+.custom-dropdown {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  background-image: none !important;
+}
+
+.custom-dropdown * {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+}
+
+/* Ensure consistent dropdown behavior across platforms */
+.custom-dropdown-option {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  border-radius: 0;
+}
+
+.custom-dropdown-option:first-child {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.custom-dropdown-option:last-child {
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+/* Windows-specific fixes */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .custom-dropdown {
+    background: transparent !important;
+  }
 }
 
 .user-settings-modal button:active {
