@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useRef } from 'react';
 import type { Character, User, UserCharacter, Nation, Element, Weapon, Status } from '../types/character';
 import { ELEMENT_COLORS, ELEMENT_TEXT_COLORS, STATUS_COLORS } from '../types/character';
+import { CustomDropdown } from './CustomDropdown';
 
 interface CharacterTableProps {
   characters: Character[];
@@ -117,69 +118,74 @@ export const CharacterTable: React.FC<CharacterTableProps> = ({
       {/* Filters */}
       <div className="p-4 md:p-6 border-b border-white/20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 md:gap-4">
-          <select
+          <CustomDropdown
+            options={[
+              { value: '', label: 'All Nations' },
+              { value: 'Mondstadt', label: 'Mondstadt' },
+              { value: 'Liyue', label: 'Liyue' },
+              { value: 'Inazuma', label: 'Inazuma' },
+              { value: 'Sumeru', label: 'Sumeru' },
+              { value: 'Fontaine', label: 'Fontaine' },
+              { value: 'Natlan', label: 'Natlan' },
+              { value: 'Nod-Krai', label: 'Nod-Krai' }
+            ]}
             value={filters.nation}
-            onChange={(e) => setFilters({...filters, nation: e.target.value as Nation | ''})}
-            className="p-2 rounded-lg bg-white/20 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-genshin-blue"
-          >
-            <option value="">All Nations</option>
-            <option value="Mondstadt">Mondstadt</option>
-            <option value="Liyue">Liyue</option>
-            <option value="Inazuma">Inazuma</option>
-            <option value="Sumeru">Sumeru</option>
-            <option value="Fontaine">Fontaine</option>
-            <option value="Natlan">Natlan</option>
-            <option value="Nod-Krai">Nod-Krai</option>
-          </select>
+            onChange={(value) => setFilters({...filters, nation: value as Nation | ''})}
+            className="p-2"
+          />
 
-          <select
+          <CustomDropdown
+            options={[
+              { value: '', label: 'All Elements' },
+              { value: 'Pyro', label: 'Pyro' },
+              { value: 'Hydro', label: 'Hydro' },
+              { value: 'Cryo', label: 'Cryo' },
+              { value: 'Dendro', label: 'Dendro' },
+              { value: 'Electro', label: 'Electro' },
+              { value: 'Anemo', label: 'Anemo' },
+              { value: 'Geo', label: 'Geo' }
+            ]}
             value={filters.element}
-            onChange={(e) => setFilters({...filters, element: e.target.value as Element | ''})}
-            className="p-2 rounded-lg bg-white/20 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-genshin-blue"
-          >
-            <option value="">All Elements</option>
-            <option value="Pyro">Pyro</option>
-            <option value="Hydro">Hydro</option>
-            <option value="Cryo">Cryo</option>
-            <option value="Dendro">Dendro</option>
-            <option value="Electro">Electro</option>
-            <option value="Anemo">Anemo</option>
-            <option value="Geo">Geo</option>
-          </select>
+            onChange={(value) => setFilters({...filters, element: value as Element | ''})}
+            className="p-2"
+          />
 
-          <select
+          <CustomDropdown
+            options={[
+              { value: '', label: 'All Weapons' },
+              { value: 'Sword', label: 'Sword' },
+              { value: 'Bow', label: 'Bow' },
+              { value: 'Catalyst', label: 'Catalyst' },
+              { value: 'Claymore', label: 'Claymore' },
+              { value: 'Polearm', label: 'Polearm' }
+            ]}
             value={filters.weapon}
-            onChange={(e) => setFilters({...filters, weapon: e.target.value as Weapon | ''})}
-            className="p-2 rounded-lg bg-white/20 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-genshin-blue"
-          >
-            <option value="">All Weapons</option>
-            <option value="Sword">Sword</option>
-            <option value="Bow">Bow</option>
-            <option value="Catalyst">Catalyst</option>
-            <option value="Claymore">Claymore</option>
-            <option value="Polearm">Polearm</option>
-          </select>
+            onChange={(value) => setFilters({...filters, weapon: value as Weapon | ''})}
+            className="p-2"
+          />
 
-          <select
+          <CustomDropdown
+            options={[
+              { value: '', label: 'All Rarities' },
+              { value: '4', label: '4★' },
+              { value: '5', label: '5★' }
+            ]}
             value={filters.rarity}
-            onChange={(e) => setFilters({...filters, rarity: e.target.value as 4 | 5 | ''})}
-            className="p-2 rounded-lg bg-white/20 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-genshin-blue"
-          >
-            <option value="">All Rarities</option>
-            <option value="4">4★</option>
-            <option value="5">5★</option>
-          </select>
+            onChange={(value) => setFilters({...filters, rarity: value as 4 | 5 | ''})}
+            className="p-2"
+          />
 
-          <select
+          <CustomDropdown
+            options={[
+              { value: '', label: 'All Statuses' },
+              { value: 'Unowned', label: 'Unowned' },
+              { value: 'WIP', label: 'WIP' },
+              { value: 'Built', label: 'Built' }
+            ]}
             value={filters.status}
-            onChange={(e) => setFilters({...filters, status: e.target.value as Status | ''})}
-            className="p-2 rounded-lg bg-white/20 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-genshin-blue"
-          >
-            <option value="">All Statuses</option>
-            <option value="Unowned">Unowned</option>
-            <option value="WIP">WIP</option>
-            <option value="Built">Built</option>
-          </select>
+            onChange={(value) => setFilters({...filters, status: value as Status | ''})}
+            className="p-2"
+          />
         </div>
       </div>
 
@@ -247,27 +253,28 @@ export const CharacterTable: React.FC<CharacterTableProps> = ({
                   </td>
                   <td className="px-3 md:px-6 py-3 md:py-4 text-white text-sm md:text-base hidden lg:table-cell">{character.weapon}</td>
                   <td className="px-3 md:px-6 py-3 md:py-4">
-                    <select
+                    <CustomDropdown
+                      options={[
+                        { value: 'Unowned', label: 'Unowned' },
+                        { value: 'WIP', label: 'WIP' },
+                        { value: 'Built', label: 'Built' }
+                      ]}
                       value={userChar.status}
-                      onChange={(e) => updateCharacter(character.id, { status: e.target.value as Status })}
-                      className={`px-2 md:px-3 py-1 rounded-lg text-xs md:text-sm font-medium text-white border-0 focus:outline-none focus:ring-2 focus:ring-genshin-blue ${STATUS_COLORS[userChar.status]}`}
-                    >
-                      <option value="Unowned">Unowned</option>
-                      <option value="WIP">WIP</option>
-                      <option value="Built">Built</option>
-                    </select>
+                      onChange={(value) => updateCharacter(character.id, { status: value as Status })}
+                      className="min-w-[100px]"
+                    />
                   </td>
                   <td className="px-3 md:px-6 py-3 md:py-4">
                     {!isUnowned && (
-                      <select
+                      <CustomDropdown
+                        options={[0, 1, 2, 3, 4, 5, 6].map(num => ({
+                          value: num,
+                          label: `C${num}`
+                        }))}
                         value={userChar.constellation}
-                        onChange={(e) => updateCharacter(character.id, { constellation: parseInt(e.target.value) })}
-                        className="px-2 md:px-3 py-1 rounded-lg text-xs md:text-sm font-medium bg-white/20 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-genshin-blue"
-                      >
-                        {[0, 1, 2, 3, 4, 5, 6].map(num => (
-                          <option key={num} value={num}>C{num}</option>
-                        ))}
-                      </select>
+                        onChange={(value) => updateCharacter(character.id, { constellation: value as number })}
+                        className="min-w-[80px]"
+                      />
                     )}
                   </td>
                   <td className="px-3 md:px-6 py-3 md:py-4">
@@ -285,15 +292,15 @@ export const CharacterTable: React.FC<CharacterTableProps> = ({
                   </td>
                   <td className="px-3 md:px-6 py-3 md:py-4">
                     {!isUnowned && (
-                      <select
+                      <CustomDropdown
+                        options={[0, 1, 2, 3, 4, 5].map(num => ({
+                          value: num,
+                          label: `R${num}`
+                        }))}
                         value={userChar.refinement}
-                        onChange={(e) => updateCharacter(character.id, { refinement: parseInt(e.target.value) })}
-                        className="px-2 md:px-3 py-1 rounded-lg text-xs md:text-sm font-medium bg-white/20 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-genshin-blue"
-                      >
-                        {[0, 1, 2, 3, 4, 5].map(num => (
-                          <option key={num} value={num}>R{num}</option>
-                        ))}
-                      </select>
+                        onChange={(value) => updateCharacter(character.id, { refinement: value as number })}
+                        className="min-w-[80px]"
+                      />
                     )}
                   </td>
                   <td className="px-3 md:px-6 py-3 md:py-4 text-white text-sm md:text-base">
