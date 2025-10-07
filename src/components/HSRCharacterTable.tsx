@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import type { HSRCharacter, HSRUser, HSRUserCharacter, Path, HSRElement, Status } from '../types/hsr-character';
 import { HSR_ELEMENT_COLORS, HSR_ELEMENT_TEXT_COLORS } from '../types/hsr-character';
 import { CustomDropdown } from './CustomDropdown';
+import { LightConeSelector } from './LightConeSelector';
 
 interface HSRCharacterTableProps {
   characters: HSRCharacter[];
@@ -230,12 +231,11 @@ export const HSRCharacterTable: React.FC<HSRCharacterTableProps> = ({
                   </td>
                   <td className="px-3 md:px-6 py-3 md:py-4">
                     {!isUnowned ? (
-                      <input
-                        type="text"
-                        value={userChar.lightConeName}
-                        onChange={(e) => updateCharacter(character.id, { lightConeName: e.target.value })}
-                        className="w-full min-w-[150px] px-2 md:px-3 py-1 rounded-lg text-xs md:text-sm bg-white/20 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-genshin-blue backdrop-blur-sm"
-                        placeholder="Light Cone Name"
+                      <LightConeSelector
+                        path={character.path}
+                        selectedLightConeName={userChar.lightConeName}
+                        onChange={(lightConeName) => updateCharacter(character.id, { lightConeName })}
+                        className="min-w-[200px]"
                       />
                     ) : (
                       <span className="text-gray-400 text-xs md:text-sm">--</span>

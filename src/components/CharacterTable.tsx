@@ -1,8 +1,10 @@
 import React, { useState, useMemo } from 'react';
 import type { Character, User, UserCharacter, Nation, Element, Weapon, Status } from '../types/character';
-import { ELEMENT_COLORS, ELEMENT_TEXT_COLORS } from '../types/character';
+import { ELEMENT_TEXT_COLORS } from '../types/character';
 import { CustomDropdown } from './CustomDropdown';
 import { WeaponSelector } from './WeaponSelector';
+import { getElementIcon } from '../utils/elementIcons';
+import { getWeaponTypeIcon } from '../utils/weaponTypeIcons';
 
 interface CharacterTableProps {
   characters: Character[];
@@ -180,13 +182,13 @@ export const CharacterTable: React.FC<CharacterTableProps> = ({
                 Nation {sortBy === 'nation' && (sortOrder === 'asc' ? '↑' : '↓')}
               </th>
               <th 
-                className="px-3 md:px-6 py-3 md:py-4 text-left text-white font-semibold cursor-pointer hover:bg-white/20 transition-colors text-sm md:text-base"
+                className="px-3 md:px-6 py-3 md:py-4 text-center text-white font-semibold cursor-pointer hover:bg-white/20 transition-colors text-sm md:text-base"
                 onClick={() => handleSort('element')}
               >
                 Element {sortBy === 'element' && (sortOrder === 'asc' ? '↑' : '↓')}
               </th>
               <th 
-                className="px-3 md:px-6 py-3 md:py-4 text-left text-white font-semibold cursor-pointer hover:bg-white/20 transition-colors text-sm md:text-base hidden lg:table-cell"
+                className="px-3 md:px-6 py-3 md:py-4 text-center text-white font-semibold cursor-pointer hover:bg-white/20 transition-colors text-sm md:text-base hidden lg:table-cell"
                 onClick={() => handleSort('weapon')}
               >
                 Weapon {sortBy === 'weapon' && (sortOrder === 'asc' ? '↑' : '↓')}
@@ -219,12 +221,22 @@ export const CharacterTable: React.FC<CharacterTableProps> = ({
                     </div>
                   </td>
                   <td className="px-3 md:px-6 py-3 md:py-4 text-white text-sm md:text-base hidden md:table-cell">{character.nation}</td>
-                  <td className="px-3 md:px-6 py-3 md:py-4">
-                    <span className={`inline-flex items-center px-2 md:px-2.5 py-0.5 rounded-full text-xs font-medium text-white ${ELEMENT_COLORS[character.element]}`}>
-                      {character.element}
-                    </span>
+                  <td className="px-3 md:px-6 py-3 md:py-4 text-center">
+                    <img 
+                      src={getElementIcon(character.element)} 
+                      alt={character.element}
+                      className="w-6 h-6 md:w-7 md:h-7 mx-auto"
+                      title={character.element}
+                    />
                   </td>
-                  <td className="px-3 md:px-6 py-3 md:py-4 text-white text-sm md:text-base hidden lg:table-cell">{character.weapon}</td>
+                  <td className="px-3 md:px-6 py-3 md:py-4 text-center hidden lg:table-cell">
+                    <img 
+                      src={getWeaponTypeIcon(character.weapon)} 
+                      alt={character.weapon}
+                      className="w-6 h-6 md:w-7 md:h-7 mx-auto"
+                      title={character.weapon}
+                    />
+                  </td>
                   <td className="px-3 md:px-6 py-3 md:py-4">
                     <CustomDropdown
                       options={[

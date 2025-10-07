@@ -13,4 +13,3 @@ Object.keys(iconModules).forEach((path) => {
 export function getWeaponIconUrl(filename: string): string {
   return weaponIconUrls[filename] || '';
 }
-
