@@ -167,21 +167,6 @@ export const HSRDashboard: React.FC = () => {
     );
   }
 
-  // Calculate stats for all users
-  const totalOwned = users.reduce((acc, user) => {
-    return acc + Object.values(user.characters).filter(c => c.status !== 'Unowned').length;
-  }, 0);
-
-  const totalBuilt = users.reduce((acc, user) => {
-    return acc + Object.values(user.characters).filter(c => c.status === 'Built').length;
-  }, 0);
-
-  const totalWIP = users.reduce((acc, user) => {
-    return acc + Object.values(user.characters).filter(c => c.status === 'WIP').length;
-  }, 0);
-
-  const totalUnowned = (HSR_CHARACTERS.length * users.length) - (totalOwned + totalBuilt + totalWIP);
-
   return (
     <div className="min-h-screen p-4 md:p-8">
       <div className="max-w-7xl mx-auto">
@@ -198,23 +183,31 @@ export const HSRDashboard: React.FC = () => {
           </p>
         </div>
 
-        {/* Overall Stats */}
-        {users.length > 0 && (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-6 md:mb-8">
-            <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 text-center">
-              <div className="text-2xl md:text-3xl font-bold text-green-400 mb-1">{totalBuilt}</div>
-              <div className="text-white/60 text-sm md:text-base">Built</div>
+        {/* Stats Summary - Per User */}
+        {currentUser && (
+          <div className="mb-6 md:mb-8 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+            <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 md:p-6 border border-white/20 text-center">
+              <div className="text-xl md:text-3xl font-bold text-white">
+                {Object.values(currentUser.characters).filter(c => c.status === 'Built' || c.status === 'WIP').length}
+              </div>
+              <div className="text-white/60 text-sm md:text-base">Characters Tracked</div>
             </div>
-            <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 text-center">
-              <div className="text-2xl md:text-3xl font-bold text-yellow-400 mb-1">{totalWIP}</div>
-              <div className="text-white/60 text-sm md:text-base">WIP</div>
+            <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 md:p-6 border border-white/20 text-center">
+              <div className="text-xl md:text-3xl font-bold text-green-400">
+                {Object.values(currentUser.characters).filter(c => c.status === 'Built').length}
+              </div>
+              <div className="text-white/60 text-sm md:text-base">Built Characters</div>
             </div>
-            <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 text-center">
-              <div className="text-2xl md:text-3xl font-bold text-blue-400 mb-1">{totalOwned}</div>
-              <div className="text-white/60 text-sm md:text-base">Owned</div>
+            <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 md:p-6 border border-white/20 text-center">
+              <div className="text-xl md:text-3xl font-bold text-yellow-400">
+                {Object.values(currentUser.characters).filter(c => c.status === 'WIP').length}
+              </div>
+              <div className="text-white/60 text-sm md:text-base">Work in Progress</div>
             </div>
-            <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 text-center">
-              <div className="text-2xl md:text-3xl font-bold text-gray-400 mb-1">{totalUnowned}</div>
+            <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 md:p-6 border border-white/20 text-center">
+              <div className="text-xl md:text-3xl font-bold text-gray-400">
+                {HSR_CHARACTERS.length - Object.values(currentUser.characters).filter(c => c.status === 'Built' || c.status === 'WIP').length}
+              </div>
               <div className="text-white/60 text-sm md:text-base">Not Owned</div>
             </div>
           </div>

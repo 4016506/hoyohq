@@ -1,8 +1,10 @@
 import React, { useState, useMemo } from 'react';
 import type { HSRCharacter, HSRUser, HSRUserCharacter, Path, HSRElement, Status } from '../types/hsr-character';
-import { HSR_ELEMENT_COLORS, HSR_ELEMENT_TEXT_COLORS } from '../types/hsr-character';
+import { HSR_ELEMENT_TEXT_COLORS } from '../types/hsr-character';
 import { CustomDropdown } from './CustomDropdown';
 import { LightConeSelector } from './LightConeSelector';
+import { getPathIcon } from '../utils/pathIcons';
+import { getHSRElementIcon } from '../utils/hsrElementIcons';
 
 interface HSRCharacterTableProps {
   characters: HSRCharacter[];
@@ -21,8 +23,8 @@ export const HSRCharacterTable: React.FC<HSRCharacterTableProps> = ({
     rarity: '' as 4 | 5 | '',
     status: '' as Status | ''
   });
-  const [sortBy, setSortBy] = useState<keyof HSRCharacter>('name');
-  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
+  const [sortBy, setSortBy] = useState<keyof HSRCharacter>('version');
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
 
   const filteredAndSortedCharacters = useMemo(() => {
     let filtered = characters.filter(char => {
@@ -75,7 +77,7 @@ export const HSRCharacterTable: React.FC<HSRCharacterTableProps> = ({
       characterId,
       status: 'Unowned',
       eidolon: 0,
-      superposition: 0,
+      superposition: 1,
       lightConeName: 'N/A'
     };
   };
@@ -170,16 +172,16 @@ export const HSRCharacterTable: React.FC<HSRCharacterTableProps> = ({
               >
                 Element {sortBy === 'element' && (sortOrder === 'asc' ? '↑' : '↓')}
               </th>
-              <th 
-                className="px-3 md:px-6 py-3 md:py-4 text-left text-white font-semibold cursor-pointer hover:bg-white/20 transition-colors text-sm md:text-base"
-                onClick={() => handleSort('unitType')}
-              >
-                Unit Type {sortBy === 'unitType' && (sortOrder === 'asc' ? '↑' : '↓')}
-              </th>
               <th className="px-3 md:px-6 py-3 md:py-4 text-left text-white font-semibold text-sm md:text-base">Status</th>
               <th className="px-3 md:px-6 py-3 md:py-4 text-left text-white font-semibold text-sm md:text-base">Eidolon</th>
               <th className="px-3 md:px-6 py-3 md:py-4 text-left text-white font-semibold text-sm md:text-base">Light Cone</th>
               <th className="px-3 md:px-6 py-3 md:py-4 text-left text-white font-semibold text-sm md:text-base">Superposition</th>
+              <th 
+                className="px-3 md:px-6 py-3 md:py-4 text-left text-white font-semibold cursor-pointer hover:bg-white/20 transition-colors text-sm md:text-base"
+                onClick={() => handleSort('version')}
+              >
+                Version {sortBy === 'version' && (sortOrder === 'asc' ? '↑' : '↓')}
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -197,13 +199,22 @@ export const HSRCharacterTable: React.FC<HSRCharacterTableProps> = ({
                       <span className={`font-medium text-sm md:text-base ${HSR_ELEMENT_TEXT_COLORS[character.element]}`}>{character.name}</span>
                     </div>
                   </td>
-                  <td className="px-3 md:px-6 py-3 md:py-4 text-white text-sm md:text-base">{character.path}</td>
                   <td className="px-3 md:px-6 py-3 md:py-4">
-                    <span className={`inline-flex items-center px-2 md:px-2.5 py-0.5 rounded-full text-xs font-medium text-white ${HSR_ELEMENT_COLORS[character.element]}`}>
-                      {character.element}
-                    </span>
+                    <img 
+                      src={getPathIcon(character.path)} 
+                      alt={character.path}
+                      title={character.path}
+                      className="w-6 h-6 md:w-8 md:h-8 object-contain"
+                    />
                   </td>
-                  <td className="px-3 md:px-6 py-3 md:py-4 text-white text-sm md:text-base">{character.unitType}</td>
+                  <td className="px-3 md:px-6 py-3 md:py-4">
+                    <img 
+                      src={getHSRElementIcon(character.element)} 
+                      alt={character.element}
+                      title={character.element}
+                      className="w-6 h-6 md:w-8 md:h-8 object-contain"
+                    />
+                  </td>
                   <td className="px-3 md:px-6 py-3 md:py-4">
                     <CustomDropdown
                       options={[
@@ -244,7 +255,7 @@ export const HSRCharacterTable: React.FC<HSRCharacterTableProps> = ({
                   <td className="px-3 md:px-6 py-3 md:py-4">
                     {!isUnowned && (
                       <CustomDropdown
-                        options={[0, 1, 2, 3, 4, 5, 6].map(num => ({
+                        options={[1, 2, 3, 4, 5].map(num => ({
                           value: num,
                           label: `S${num}`
                         }))}
@@ -254,6 +265,7 @@ export const HSRCharacterTable: React.FC<HSRCharacterTableProps> = ({
                       />
                     )}
                   </td>
+                  <td className="px-3 md:px-6 py-3 md:py-4 text-white text-sm md:text-base">{character.version}</td>
                 </tr>
               );
             })}

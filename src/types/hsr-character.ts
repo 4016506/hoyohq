@@ -18,7 +18,7 @@ export interface HSRUserCharacter {
   status: Status;
   eidolon: number; // 0-6 (E0 to E6)
   lightConeName: string;
-  superposition: number; // 0-6 (S0 to S6)
+  superposition: number; // 1-5 (S1 to S5)
 }
 
 export interface HSRUser {

@@ -25,7 +25,7 @@ export const CharacterTable: React.FC<CharacterTableProps> = ({
     status: '' as Status | ''
   });
   const [sortBy, setSortBy] = useState<keyof Character>('version');
-  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
 
   const filteredAndSortedCharacters = useMemo(() => {
     let filtered = characters.filter(char => {

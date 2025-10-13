@@ -176,7 +176,7 @@ export const Dashboard: React.FC = () => {
           <div className="mb-6 md:mb-8 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
             <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 md:p-6 border border-white/20 text-center">
               <div className="text-xl md:text-3xl font-bold text-white">
-                {Object.keys(currentUser.characters).length}
+                {Object.values(currentUser.characters).filter(c => c.status === 'Built' || c.status === 'WIP').length}
               </div>
               <div className="text-white/60 text-sm md:text-base">Characters Tracked</div>
             </div>
@@ -194,7 +194,7 @@ export const Dashboard: React.FC = () => {
             </div>
             <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 md:p-6 border border-white/20 text-center">
               <div className="text-xl md:text-3xl font-bold text-gray-400">
-                {CHARACTERS.length - Object.keys(currentUser.characters).length}
+                {CHARACTERS.length - Object.values(currentUser.characters).filter(c => c.status === 'Built' || c.status === 'WIP').length}
               </div>
               <div className="text-white/60 text-sm md:text-base">Not Owned</div>
             </div>
