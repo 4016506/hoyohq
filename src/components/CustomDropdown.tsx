@@ -146,7 +146,7 @@ export const CustomDropdown: React.FC<CustomDropdownProps> = ({
       {isOpen && (
         <div
           className="
-            absolute z-50 w-full mt-1 rounded-lg shadow-xl
+            absolute z-[9999] w-full mt-1 rounded-lg shadow-xl
             border border-white/30 max-h-60 overflow-auto
             animate-in fade-in-0 zoom-in-95 duration-200
             backdrop-blur-md

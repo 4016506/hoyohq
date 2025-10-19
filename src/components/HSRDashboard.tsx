@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import type { HSRUser, HSRUserCharacter } from '../types/hsr-character';
 import { HSR_CHARACTERS } from '../data/hsr-characters';
-import { HSRUserSelector } from './HSRUserSelector';
+import { CompactHSRUserSelector } from './CompactHSRUserSelector';
 import { HSRCharacterTable } from './HSRCharacterTable';
 import { ResetButton } from './ResetButton';
 import { GameTabNavigation } from './GameTabNavigation';
@@ -178,14 +178,28 @@ export const HSRDashboard: React.FC = () => {
           <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold text-white mb-2 md:mb-4 bg-gradient-to-r from-purple-400 via-pink-500 to-blue-500 bg-clip-text text-transparent">
             HOYO HQ
           </h1>
-          <p className="text-lg md:text-xl text-white/80">
+          <p className="text-lg md:text-xl text-white/80 mb-4">
             Three friends, two games, one dream.
           </p>
+          
+          {/* Compact User Selector */}
+          <div className="flex justify-center relative">
+            <div className="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 p-3 md:p-4 w-full max-w-4xl relative z-20">
+              <CompactHSRUserSelector
+                users={users}
+                currentUser={currentUser}
+                onUserSelect={setCurrentUser}
+                onUserCreate={createUser}
+                onUserUpdate={handleUserUpdate}
+                onUserDelete={handleUserDelete}
+              />
+            </div>
+          </div>
         </div>
 
         {/* Stats Summary - Per User */}
         {currentUser && (
-          <div className="mb-6 md:mb-8 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+          <div className="mb-6 md:mb-8 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 relative z-0">
             <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 md:p-6 border border-white/20 text-center">
               <div className="text-xl md:text-3xl font-bold text-white">
                 {Object.values(currentUser.characters).filter(c => c.status === 'Built' || c.status === 'WIP').length}
@@ -213,35 +227,21 @@ export const HSRDashboard: React.FC = () => {
           </div>
         )}
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 md:gap-8">
-          {/* User Selector */}
-          <div className="lg:col-span-1">
-            <HSRUserSelector
-              users={users}
+        {/* Character Table - Full Width */}
+        <div className="w-full">
+          {currentUser ? (
+            <HSRCharacterTable
+              characters={HSR_CHARACTERS}
               currentUser={currentUser}
-              onUserSelect={setCurrentUser}
-              onUserCreate={createUser}
-              onUserUpdate={handleUserUpdate}
-              onUserDelete={handleUserDelete}
+              onUpdateUserCharacter={updateUserCharacter}
             />
-          </div>
-
-          {/* Character Table */}
-          <div className="lg:col-span-3">
-            {currentUser ? (
-              <HSRCharacterTable
-                characters={HSR_CHARACTERS}
-                currentUser={currentUser}
-                onUpdateUserCharacter={updateUserCharacter}
-              />
-            ) : (
-              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-12 border border-white/20 shadow-xl text-center">
-                <div className="text-white/60 text-lg">
-                  Select or create a user to start tracking your characters!
-                </div>
+          ) : (
+            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-12 border border-white/20 shadow-xl text-center">
+              <div className="text-white/60 text-lg">
+                Select or create a user to start tracking your characters!
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
 
         {/* Reset Button - Bottom */}
