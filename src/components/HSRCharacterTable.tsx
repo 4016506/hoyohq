@@ -127,8 +127,8 @@ export const HSRCharacterTable: React.FC<HSRCharacterTableProps> = ({
           <CustomDropdown
             options={[
               { value: '', label: 'All Rarities' },
-              { value: '4', label: '4★' },
-              { value: '5', label: '5★' }
+              { value: 4, label: '4★' },
+              { value: 5, label: '5★' }
             ]}
             value={filters.rarity}
             onChange={(value) => setFilters({...filters, rarity: value as 4 | 5 | ''})}

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { getLightConesByPath, getLightConeByName } from '../data/lightConesData';
+import { getAllLightCones, getLightConeByName } from '../data/lightConesData';
 import { getLightConeIconUrl } from '../utils/lightConeIcons';
 import type { LightConeData } from '../types/light-cone';
 import type { Path } from '../types/hsr-character';
@@ -22,8 +22,8 @@ export const LightConeSelector: React.FC<LightConeSelectorProps> = ({
   const dropdownRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
-  // Get all light cones for this path
-  const availableLightCones = getLightConesByPath(path);
+  // Get all light cones (not filtered by path)
+  const availableLightCones = getAllLightCones();
   
   // Filter light cones based on search query
   const filteredLightCones = availableLightCones.filter(lc =>

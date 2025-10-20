@@ -65,6 +65,10 @@ export function getLightConesByPath(path: string): LightConeData[] {
   return allLightCones.filter(lc => lc.path === path);
 }
 
+export function getAllLightCones(): LightConeData[] {
+  return parseLightConesCSV();
+}
+
 export function getLightConeByName(lightConeName: string): LightConeData | undefined {
   const allLightCones = parseLightConesCSV();
   return allLightCones.find(lc => lc.name === lightConeName);
