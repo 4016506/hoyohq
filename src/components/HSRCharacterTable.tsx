@@ -243,7 +243,6 @@ export const HSRCharacterTable: React.FC<HSRCharacterTableProps> = ({
                   <td className="px-3 md:px-6 py-3 md:py-4">
                     {!isUnowned ? (
                       <LightConeSelector
-                        path={character.path}
                         selectedLightConeName={userChar.lightConeName}
                         onChange={(lightConeName) => updateCharacter(character.id, { lightConeName })}
                         className="min-w-[200px]"

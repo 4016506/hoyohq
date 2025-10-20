@@ -2,17 +2,14 @@ import React, { useState, useRef, useEffect } from 'react';
 import { getAllLightCones, getLightConeByName } from '../data/lightConesData';
 import { getLightConeIconUrl } from '../utils/lightConeIcons';
 import type { LightConeData } from '../types/light-cone';
-import type { Path } from '../types/hsr-character';
 
 interface LightConeSelectorProps {
-  path: Path;
   selectedLightConeName: string;
   onChange: (lightConeName: string) => void;
   className?: string;
 }
 
 export const LightConeSelector: React.FC<LightConeSelectorProps> = ({
-  path,
   selectedLightConeName,
   onChange,
   className = ''
