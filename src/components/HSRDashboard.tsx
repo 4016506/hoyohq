@@ -178,8 +178,8 @@ export const HSRDashboard: React.FC = () => {
           onClick={() => window.location.href = '/blog'}
           className="fixed top-4 right-4 z-50 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white rounded-lg font-medium transition-all duration-200 shadow-lg flex items-center gap-2"
         >
-          <span>💬</span>
-          <span className="hidden sm:inline">Kitchen</span>
+          <span>🍳</span>
+          <span className="hidden sm:inline">The Kitchen</span>
         </button>
         
         {/* Header */}
