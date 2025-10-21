@@ -152,6 +152,15 @@ export const Dashboard: React.FC = () => {
         {/* Game Tab Navigation */}
         <GameTabNavigation />
         
+        {/* Blog Button - Fixed Position */}
+        <button
+          onClick={() => window.location.href = '/blog'}
+          className="fixed top-4 right-4 z-50 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white rounded-lg font-medium transition-all duration-200 shadow-lg flex items-center gap-2"
+        >
+          <span>🍳</span>
+          <span className="hidden sm:inline">The Kitchen</span>
+        </button>
+        
         {/* Header */}
         <div className="text-center mb-6 md:mb-8">
           <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold text-white mb-2 md:mb-4 bg-gradient-to-r from-yellow-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">

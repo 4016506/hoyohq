@@ -32,6 +32,7 @@ export const HSR_CHARACTERS: HSRCharacter[] = [
   { id: "evernight", name: "Evernight", rarity: 5, path: "Remembrance", element: "Ice", unitType: "Self-Harm DPS", version: 3.6 },
   { id: "danhengpt", name: "Dan Heng PT", rarity: 5, path: "Preservation", element: "Physical", unitType: "Team Shielder", version: 3.6 },
   { id: "cyrene", name: "Cyrene", rarity: 5, path: "Remembrance", element: "Ice", unitType: "Team Support (CH)", version: 3.7 },
+  { id: "thedahlia", name: "The Dahlia", rarity: 5, path: "Nihility", element: "Fire", unitType: "Break Support", version: 3.8 },
   
   // 4-star characters
   { id: "sushang", name: "Sushang", rarity: 4, path: "Hunt", element: "Physical", unitType: "DPS", version: 1.0 },
