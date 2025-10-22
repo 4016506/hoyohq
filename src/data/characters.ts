@@ -49,7 +49,7 @@ export const CHARACTERS: Character[] = [
   { id: "ifa", name: "Ifa", rarity: 4, nation: "Natlan", element: "Anemo", weapon: "Catalyst", version: 5.6 },
   { id: "lan_yan", name: "Lan Yan", rarity: 4, nation: "Liyue", element: "Anemo", weapon: "Catalyst", version: 5.4 },
   { id: "yumemizuki_mizuki", name: "Yumemizuki Mizuki", rarity: 5, nation: "Inazuma", element: "Anemo", weapon: "Catalyst", version: 5.4 },
-  { id: "escoffier", name: "Escoffier", rarity: 4, nation: "Fontaine", element: "Cryo", weapon: "Polearm", version: 5.6 },
+  { id: "escoffier", name: "Escoffier", rarity: 5, nation: "Fontaine", element: "Cryo", weapon: "Polearm", version: 5.6 },
   { id: "aino", name: "Aino", rarity: 4, nation: "Nod-Krai", element: "Hydro", weapon: "Claymore", version: 6.0 },
   { id: "lauma", name: "Lauma", rarity: 5, nation: "Nod-Krai", element: "Dendro", weapon: "Catalyst", version: 6.0 },
   { id: "flins", name: "Flins", rarity: 5, nation: "Nod-Krai", element: "Electro", weapon: "Polearm", version: 6.0 },
