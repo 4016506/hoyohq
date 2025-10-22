@@ -1,4 +1,4 @@
-export type GameTag = "Genshin Impact" | "Honkai: Star Rail";
+export type GameTag = "Genshin Impact" | "Honkai: Star Rail" | "Ticket";
 
 export interface BlogPost {
   id: string;

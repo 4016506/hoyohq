@@ -480,7 +480,7 @@ export const Blog: React.FC = () => {
 
           {/* Game Filter */}
           <div className="flex justify-center gap-2">
-            {(['All', 'Genshin Impact', 'Honkai: Star Rail'] as const).map((game) => (
+            {(['All', 'Genshin Impact', 'Honkai: Star Rail', 'Ticket'] as const).map((game) => (
               <button
                 key={game}
                 onClick={() => setSelectedGame(game)}
@@ -510,7 +510,8 @@ export const Blog: React.FC = () => {
                   <CustomDropdown
                     options={[
                       { value: 'Genshin Impact', label: 'Genshin Impact' },
-                      { value: 'Honkai: Star Rail', label: 'Honkai: Star Rail' }
+                      { value: 'Honkai: Star Rail', label: 'Honkai: Star Rail' },
+                      { value: 'Ticket', label: 'Ticket' }
                     ]}
                     value={postGame}
                     onChange={(value) => setPostGame(value as GameTag)}
@@ -593,7 +594,9 @@ export const Blog: React.FC = () => {
                         className={`px-2 py-1 rounded text-xs font-medium ${
                           post.game === 'Genshin Impact'
                             ? 'bg-yellow-500/20 text-yellow-300'
-                            : 'bg-purple-500/20 text-purple-300'
+                            : post.game === 'Honkai: Star Rail'
+                            ? 'bg-purple-500/20 text-purple-300'
+                            : 'bg-green-500/20 text-green-300'
                         }`}
                       >
                         {post.game}
