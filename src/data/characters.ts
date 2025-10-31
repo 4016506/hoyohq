@@ -107,4 +107,5 @@ export const CHARACTERS: Character[] = [
   { id: "mavuika", name: "Mavuika", rarity: 5, nation: "Natlan", element: "Pyro", weapon: "Claymore", version: 5.3 },
   { id: "varesa", name: "Varesa", rarity: 5, nation: "Natlan", element: "Electro", weapon: "Catalyst", version: 5.5 },
   { id: "skirk", name: "Skirk", rarity: 5, nation: "N/A", element: "Cryo", weapon: "Sword", version: 5.7 },
+  { id: "ineffa", name: "Ineffa", rarity: 5, nation: "Nod-Krai", element: "Electro", weapon: "Polearm", version: 5.8 },
 ];
