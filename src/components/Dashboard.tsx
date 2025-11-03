@@ -11,6 +11,7 @@ export const Dashboard: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [firebaseError, setFirebaseError] = useState<string | null>(null);
 
   // Load users from Firebase on component mount
   useEffect(() => {
@@ -19,23 +20,64 @@ export const Dashboard: React.FC = () => {
         console.log('Attempting to load users from Firebase...');
         const firebaseUsers = await getAllUsers();
         console.log('Firebase users loaded:', firebaseUsers);
-        setUsers(firebaseUsers);
-        // Set the first user as current if none is selected
-        if (firebaseUsers.length > 0 && !currentUser) {
-          setCurrentUser(firebaseUsers[0]);
+        
+        if (firebaseUsers.length > 0) {
+          setUsers(firebaseUsers);
+          // Set the first user as current if none is selected
+          if (!currentUser) {
+            setCurrentUser(firebaseUsers[0]);
+          }
+        } else {
+          // If Firebase returns empty, check localStorage as fallback
+          console.log('Firebase returned empty array, checking localStorage...');
+          const savedUsers = localStorage.getItem('genshin-users');
+          if (savedUsers) {
+            try {
+              const parsedUsers = JSON.parse(savedUsers);
+              console.log('Parsed localStorage users:', parsedUsers);
+              if (parsedUsers.length > 0) {
+                setUsers(parsedUsers);
+                if (!currentUser) {
+                  setCurrentUser(parsedUsers[0]);
+                }
+              }
+            } catch (parseError) {
+              console.error('Error parsing localStorage users:', parseError);
+            }
+          }
         }
-      } catch (error) {
+      } catch (error: any) {
         console.error('Error loading users from Firebase:', error);
+        
+        // Check if it's a permissions error
+        const isPermissionError = error?.code === 'permission-denied' || 
+                                  error?.message?.includes('permission') ||
+                                  error?.message?.includes('Missing or insufficient permissions');
+        
+        if (isPermissionError) {
+          console.warn('Firebase permissions error detected. Falling back to localStorage and checking for Firebase rules issue.');
+        }
+        
         // Fallback to localStorage if Firebase fails
         const savedUsers = localStorage.getItem('genshin-users');
         console.log('Checking localStorage for users:', savedUsers);
         if (savedUsers) {
-          const parsedUsers = JSON.parse(savedUsers);
-          console.log('Parsed localStorage users:', parsedUsers);
-          setUsers(parsedUsers);
-          if (parsedUsers.length > 0 && !currentUser) {
-            setCurrentUser(parsedUsers[0]);
+          try {
+            const parsedUsers = JSON.parse(savedUsers);
+            console.log('Parsed localStorage users:', parsedUsers);
+            if (parsedUsers.length > 0) {
+              setUsers(parsedUsers);
+              if (!currentUser) {
+                setCurrentUser(parsedUsers[0]);
+              }
+              console.log('Successfully loaded users from localStorage fallback');
+            }
+          } catch (parseError) {
+            console.error('Error parsing localStorage users:', parseError);
           }
+        } else if (isPermissionError) {
+          console.warn('No localStorage backup found. Users need to fix Firebase security rules.');
+          setFirebaseError('Firebase permissions error. Please update your Firestore security rules to allow read/write access.');
         }
       }
       setIsLoading(false);
@@ -53,13 +95,27 @@ export const Dashboard: React.FC = () => {
     
     try {
       await saveUser(newUser);
-      setUsers(prev => [...prev, newUser]);
+      const updatedUsers = [...users, newUser];
+      setUsers(updatedUsers);
       setCurrentUser(newUser);
-    } catch (error) {
+      // Save to localStorage as backup
+      localStorage.setItem('genshin-users', JSON.stringify(updatedUsers));
+    } catch (error: any) {
       console.error('Error saving user to Firebase:', error);
       // Fallback to local state if Firebase fails
-      setUsers(prev => [...prev, newUser]);
+      const updatedUsers = [...users, newUser];
+      setUsers(updatedUsers);
       setCurrentUser(newUser);
+      // Save to localStorage as backup
+      localStorage.setItem('genshin-users', JSON.stringify(updatedUsers));
+      
+      // If it's a permissions error, show the error banner
+      const isPermissionError = error?.code === 'permission-denied' || 
+                                error?.message?.includes('permission') ||
+                                error?.message?.includes('Missing or insufficient permissions');
+      if (isPermissionError && !firebaseError) {
+        setFirebaseError('Firebase permissions error. Please update your Firestore security rules to allow read/write access.');
+      }
     }
   };
 
@@ -87,16 +143,30 @@ export const Dashboard: React.FC = () => {
     try {
       await updateUserCharacterFirebase(currentUser.id, characterId, updatedCharacterData);
       setCurrentUser(updatedUser);
-      setUsers(prev => prev.map(user => 
+      const updatedUsers = users.map(user => 
         user.id === currentUser.id ? updatedUser : user
-      ));
-    } catch (error) {
+      );
+      setUsers(updatedUsers);
+      // Save to localStorage as backup
+      localStorage.setItem('genshin-users', JSON.stringify(updatedUsers));
+    } catch (error: any) {
       console.error('Error updating character in Firebase:', error);
       // Fallback to local state if Firebase fails
-      setCurrentUser(updatedUser);
-      setUsers(prev => prev.map(user => 
+      const updatedUsers = users.map(user => 
         user.id === currentUser.id ? updatedUser : user
-      ));
+      );
+      setCurrentUser(updatedUser);
+      setUsers(updatedUsers);
+      // Save to localStorage as backup
+      localStorage.setItem('genshin-users', JSON.stringify(updatedUsers));
+      
+      // If it's a permissions error, show the error banner
+      const isPermissionError = error?.code === 'permission-denied' || 
+                                error?.message?.includes('permission') ||
+                                error?.message?.includes('Missing or insufficient permissions');
+      if (isPermissionError && !firebaseError) {
+        setFirebaseError('Firebase permissions error. Please update your Firestore security rules to allow read/write access.');
+      }
     }
   };
 
@@ -121,6 +191,38 @@ export const Dashboard: React.FC = () => {
     if (currentUser?.id === userId) {
       const remainingUsers = users.filter(user => user.id !== userId);
       setCurrentUser(remainingUsers.length > 0 ? remainingUsers[0] : null);
+    }
+  };
+
+  const handleReloadFromFirebase = async () => {
+    setIsLoading(true);
+    setFirebaseError(null);
+    try {
+      console.log('Manual reload: Attempting to load users from Firebase...');
+      const firebaseUsers = await getAllUsers();
+      console.log('Manual reload: Firebase users loaded:', firebaseUsers);
+      
+      if (firebaseUsers.length > 0) {
+        setUsers(firebaseUsers);
+        setCurrentUser(firebaseUsers[0]);
+        setFirebaseError(null); // Clear error on success
+        alert(`Successfully loaded ${firebaseUsers.length} user(s) from Firebase!`);
+      } else {
+        alert('No users found in Firebase. Please check your Firebase console to verify the data exists in the "users" collection.');
+      }
+    } catch (error: any) {
+      console.error('Manual reload: Error loading users from Firebase:', error);
+      const isPermissionError = error?.code === 'permission-denied' || 
+                                error?.message?.includes('permission') ||
+                                error?.message?.includes('Missing or insufficient permissions');
+      
+      if (isPermissionError) {
+        setFirebaseError('Firebase permissions error. Please update your Firestore security rules.');
+      } else {
+        alert('Error loading users from Firebase. Check the console for details.');
+      }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -184,14 +286,62 @@ export const Dashboard: React.FC = () => {
             </div>
           </div>
           
-          {/* Test button */}
+          {/* Firebase Error Banner */}
+          {firebaseError && (
+            <div className="mt-4 mx-auto max-w-4xl bg-red-500/20 border border-red-500/50 rounded-xl p-4 backdrop-blur-md">
+              <div className="flex items-start gap-3">
+                <div className="text-red-400 text-xl">⚠️</div>
+                <div className="flex-1">
+                  <h3 className="text-red-300 font-bold mb-2">Firebase Permissions Error</h3>
+                  <p className="text-red-200 text-sm mb-3">{firebaseError}</p>
+                  <div className="bg-black/20 rounded-lg p-3 mb-3">
+                    <p className="text-white/90 text-xs font-semibold mb-2">To fix this, update your Firestore security rules:</p>
+                    <ol className="text-white/80 text-xs list-decimal list-inside space-y-1 ml-2">
+                      <li>Go to <a href="https://console.firebase.google.com/project/hoyohq-f2dc9/firestore/rules" target="_blank" rel="noopener noreferrer" className="text-blue-300 underline">Firebase Console → Firestore → Rules</a></li>
+                      <li>Update the rules to allow read/write access:</li>
+                    </ol>
+                    <pre className="mt-2 text-xs bg-black/40 p-2 rounded overflow-x-auto text-green-300">
+{`rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{userId} {
+      allow read, write: if true;
+    }
+    match /hsr-users/{userId} {
+      allow read, write: if true;
+    }
+  }
+}`}
+                    </pre>
+                    <p className="text-white/70 text-xs mt-2">⚠️ Note: These rules allow public access. For production, implement proper authentication.</p>
+                  </div>
+                  <button
+                    onClick={() => setFirebaseError(null)}
+                    className="text-red-300 hover:text-red-200 text-xs underline"
+                  >
+                    Dismiss
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Reload and Test buttons */}
           {users.length === 0 && (
-            <button
-              onClick={createTestUser}
-              className="mt-4 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors duration-200"
-            >
-              Create Test User
-            </button>
+            <div className="mt-4 flex gap-3 justify-center items-center">
+              <button
+                onClick={handleReloadFromFirebase}
+                className="px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white rounded-lg transition-colors duration-200 font-medium shadow-lg"
+              >
+                🔄 Reload from Firebase
+              </button>
+              <button
+                onClick={createTestUser}
+                className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors duration-200 font-medium"
+              >
+                Create Test User
+              </button>
+            </div>
           )}
         </div>
 
