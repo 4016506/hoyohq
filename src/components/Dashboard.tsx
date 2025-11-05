@@ -310,6 +310,12 @@ service cloud.firestore {
     match /hsr-users/{userId} {
       allow read, write: if true;
     }
+    match /blog-posts/{postId} {
+      allow read, write: if true;
+    }
+    match /blog-replies/{replyId} {
+      allow read, write: if true;
+    }
   }
 }`}
                     </pre>
