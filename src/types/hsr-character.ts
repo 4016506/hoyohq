@@ -1,4 +1,4 @@
-export type Path = "Destruction" | "Hunt" | "Harmony" | "Erudition" | "Nihility" | "Preservation" | "Abundance" | "Remembrance";
+export type Path = "Destruction" | "Hunt" | "Harmony" | "Erudition" | "Nihility" | "Preservation" | "Abundance" | "Remembrance" | "Elation";
 export type HSRElement = "Physical" | "Fire" | "Ice" | "Lightning" | "Wind" | "Quantum" | "Imaginary";
 export type Rarity = 4 | 5;
 export type Status = "Unowned" | "WIP" | "Built";

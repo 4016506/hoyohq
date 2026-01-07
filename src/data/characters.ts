@@ -54,6 +54,11 @@ export const CHARACTERS: Character[] = [
   { id: "lauma", name: "Lauma", rarity: 5, nation: "Nod-Krai", element: "Dendro", weapon: "Catalyst", version: 6.0 },
   { id: "flins", name: "Flins", rarity: 5, nation: "Nod-Krai", element: "Electro", weapon: "Polearm", version: 6.0 },
   { id: "nefer", name: "Nefer", rarity: 5, nation: "Nod-Krai", element: "Dendro", weapon: "Catalyst", version: 6.1 },
+  { id: "durin", name: "Durin", rarity: 5, nation: "Nod-Krai", element: "Pyro", weapon: "Sword", version: 6.2 },
+  { id: "jahoda", name: "Jahoda", rarity: 4, nation: "Nod-Krai", element: "Anemo", weapon: "Bow", version: 6.2 },
+  { id: "columbina_hyposelenia", name: "Columbina Hyposelenia", rarity: 5, nation: "Nod-Krai", element: "Hydro", weapon: "Catalyst", version: 6.3 },
+  { id: "zibai", name: "Zibai", rarity: 5, nation: "Liyue", element: "Geo", weapon: "Sword", version: 6.3 },
+  { id: "illuga", name: "Illuga", rarity: 4, nation: "Nod-Krai", element: "Geo", weapon: "Polearm", version: 6.3 },
 
   // 5-star characters
   { id: "jean", name: "Jean", rarity: 5, nation: "Mondstadt", element: "Anemo", weapon: "Sword", version: 1.0 },

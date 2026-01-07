@@ -9,6 +9,7 @@ import huntIcon from '../images/path_icons/hunt.webp';
 import nihilityIcon from '../images/path_icons/nihility.webp';
 import preservationIcon from '../images/path_icons/preservation.webp';
 import remembranceIcon from '../images/path_icons/remembrance.webp';
+import elationIcon from '../images/path_icons/remembrance.webp';
 
 export const PATH_ICONS: Record<Path, string> = {
   Abundance: abundanceIcon,
@@ -19,6 +20,7 @@ export const PATH_ICONS: Record<Path, string> = {
   Nihility: nihilityIcon,
   Preservation: preservationIcon,
   Remembrance: remembranceIcon,
+  Elation: elationIcon,
 };
 
 export const getPathIcon = (path: Path): string => {
