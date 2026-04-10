@@ -60,6 +60,7 @@ export const CHARACTERS: Character[] = [
   { id: "zibai", name: "Zibai", rarity: 5, nation: "Liyue", element: "Geo", weapon: "Sword", version: 6.3 },
   { id: "illuga", name: "Illuga", rarity: 4, nation: "Nod-Krai", element: "Geo", weapon: "Polearm", version: 6.3 },
   { id: "varka", name: "Varka", rarity: 5, nation: "Mondstadt", element: "Anemo", weapon: "Sword", version: 6.4 },
+  { id: "linnea", name: "Linnea", rarity: 5, nation: "Nod-Krai", element: "Geo", weapon: "Bow", version: 6.5 },
 
   // 5-star characters
   { id: "jean", name: "Jean", rarity: 5, nation: "Mondstadt", element: "Anemo", weapon: "Sword", version: 1.0 },

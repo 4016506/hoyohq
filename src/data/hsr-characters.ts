@@ -35,7 +35,10 @@ export const HSR_CHARACTERS: HSRCharacter[] = [
   { id: "thedahlia", name: "The Dahlia", rarity: 5, path: "Nihility", element: "Fire", unitType: "Break Support", version: 3.8 },
   { id: "yaoguang", name: "Yao Guang", rarity: 5, path: "Elation", element: "Physical", unitType: "Elation Support", version: 4.0 },
   { id: "sparxie", name: "Sparxie", rarity: 5, path: "Elation", element: "Fire", unitType: "DPS", version: 4.0 },
-  { id: "ashveil", name: "Ashveil", rarity: 5, path: "Hunt", element: "Lightning", unitType: "DPS", version: 4.0 },
+  { id: "ashveil", name: "Ashveil", rarity: 5, path: "Hunt", element: "Lightning", unitType: "DPS", version: 4.1 },
+  { id: "silverwolflv999", name: "Silver Wolf LV999", rarity: 5, path: "Elation", element: "Imaginary", unitType: "DPS", version: 4.2 },
+  { id: "evanescia", name: "Evanescia", rarity: 5, path: "Elation", element: "Physical", unitType: "DPS", version: 4.2 },
+  { id: "mortenaxblade", name: "Mortenax Blade", rarity: 5, path: "Nihility", element: "Fire", unitType: "DPS", version: 4.3 },
   
   // 4-star characters
   { id: "sushang", name: "Sushang", rarity: 4, path: "Hunt", element: "Physical", unitType: "DPS", version: 1.0 },
