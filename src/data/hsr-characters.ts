@@ -1,7 +1,7 @@
 import type { HSRCharacter } from '../types/hsr-character';
 
+/** Playable roster; `id` values are stable keys for saved user data. */
 export const HSR_CHARACTERS: HSRCharacter[] = [
-  // 5-star characters
   { id: "gallagher", name: "Gallagher", rarity: 4, path: "Abundance", element: "Fire", unitType: "Healer", version: 2.1 },
   { id: "boothill", name: "Boothill", rarity: 5, path: "Hunt", element: "Physical", unitType: "ST Break DPS", version: 2.2 },
   { id: "robin", name: "Robin", rarity: 5, path: "Harmony", element: "Physical", unitType: "FUA Support", version: 2.2 },
@@ -39,8 +39,7 @@ export const HSR_CHARACTERS: HSRCharacter[] = [
   { id: "silverwolflv999", name: "Silver Wolf LV999", rarity: 5, path: "Elation", element: "Imaginary", unitType: "DPS", version: 4.2 },
   { id: "evanescia", name: "Evanescia", rarity: 5, path: "Elation", element: "Physical", unitType: "DPS", version: 4.2 },
   { id: "mortenaxblade", name: "Mortenax Blade", rarity: 5, path: "Nihility", element: "Fire", unitType: "DPS", version: 4.3 },
-  
-  // 4-star characters
+
   { id: "sushang", name: "Sushang", rarity: 4, path: "Hunt", element: "Physical", unitType: "DPS", version: 1.0 },
   { id: "tingyun", name: "Tingyun", rarity: 4, path: "Harmony", element: "Lightning", unitType: "Hypercarry Support", version: 1.0 },
   { id: "luocha", name: "Luocha", rarity: 5, path: "Abundance", element: "Imaginary", unitType: "Healer", version: 1.1 },

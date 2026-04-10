@@ -28,10 +28,10 @@ export const CharacterTable: React.FC<CharacterTableProps> = ({
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
 
   const filteredAndSortedCharacters = useMemo(() => {
-    let filtered = characters.filter(char => {
+    const filtered = characters.filter(char => {
       const userChar = currentUser?.characters[char.id];
       const status = userChar?.status || 'Unowned';
-      
+
       return (
         (!filters.nation || char.nation === filters.nation) &&
         (!filters.element || char.element === filters.element) &&
@@ -42,24 +42,22 @@ export const CharacterTable: React.FC<CharacterTableProps> = ({
     });
 
     filtered.sort((a, b) => {
-      let aVal: any = a[sortBy];
-      let bVal: any = b[sortBy];
-      
-      if (sortBy === 'rarity') {
-        aVal = a.rarity;
-        bVal = b.rarity;
+      const rawA = a[sortBy];
+      const rawB = b[sortBy];
+      let aVal: string | number;
+      let bVal: string | number;
+      if (typeof rawA === 'string' && typeof rawB === 'string') {
+        aVal = rawA.toLowerCase();
+        bVal = rawB.toLowerCase();
+      } else {
+        aVal = rawA as string | number;
+        bVal = rawB as string | number;
       }
-      
-      if (typeof aVal === 'string') {
-        aVal = aVal.toLowerCase();
-        bVal = bVal.toLowerCase();
-      }
-      
+
       if (sortOrder === 'asc') {
         return aVal < bVal ? -1 : aVal > bVal ? 1 : 0;
-      } else {
-        return aVal > bVal ? -1 : aVal < bVal ? 1 : 0;
       }
+      return aVal > bVal ? -1 : aVal < bVal ? 1 : 0;
     });
 
     return filtered;

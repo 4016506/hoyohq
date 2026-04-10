@@ -23,21 +23,14 @@ export const saveUser = async (user: User): Promise<void> => {
 // Get all users
 export const getAllUsers = async (): Promise<User[]> => {
   try {
-    console.log('Fetching users from collection:', USERS_COLLECTION);
     const usersRef = collection(db, USERS_COLLECTION);
     const querySnapshot = await getDocs(usersRef);
-    
-    console.log('Query snapshot size:', querySnapshot.size);
-    console.log('Query snapshot empty:', querySnapshot.empty);
-    
+
     const users: User[] = [];
     querySnapshot.forEach((doc) => {
-      const data = doc.data();
-      console.log('Found user document:', doc.id, data);
-      users.push(data as User);
+      users.push(doc.data() as User);
     });
-    
-    console.log('Total users retrieved:', users.length);
+
     return users;
   } catch (error) {
     console.error('Error in getAllUsers:', error);

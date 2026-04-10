@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { deleteUser } from '../services/firebaseService';
 
 interface ResetButtonProps {
-  users: any[];
+  users: { id: string }[];
   onReset: () => void;
 }
 

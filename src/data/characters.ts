@@ -1,7 +1,7 @@
 import type { Character } from '../types/character';
 
+/** Playable roster; `id` values are stable keys for saved user data. */
 export const CHARACTERS: Character[] = [
-  // 4-star characters
   { id: "amber", name: "Amber", rarity: 4, nation: "Mondstadt", element: "Pyro", weapon: "Bow", version: 1.0 },
   { id: "kaeya", name: "Kaeya", rarity: 4, nation: "Mondstadt", element: "Cryo", weapon: "Sword", version: 1.0 },
   { id: "lisa", name: "Lisa", rarity: 4, nation: "Mondstadt", element: "Electro", weapon: "Catalyst", version: 1.0 },
@@ -59,10 +59,9 @@ export const CHARACTERS: Character[] = [
   { id: "columbina_hyposelenia", name: "Columbina Hyposelenia", rarity: 5, nation: "Nod-Krai", element: "Hydro", weapon: "Catalyst", version: 6.3 },
   { id: "zibai", name: "Zibai", rarity: 5, nation: "Liyue", element: "Geo", weapon: "Sword", version: 6.3 },
   { id: "illuga", name: "Illuga", rarity: 4, nation: "Nod-Krai", element: "Geo", weapon: "Polearm", version: 6.3 },
-  { id: "varka", name: "Varka", rarity: 5, nation: "Mondstadt", element: "Anemo", weapon: "Sword", version: 6.4 },
+  { id: "varka", name: "Varka", rarity: 5, nation: "Mondstadt", element: "Anemo", weapon: "Claymore", version: 6.4 },
   { id: "linnea", name: "Linnea", rarity: 5, nation: "Nod-Krai", element: "Geo", weapon: "Bow", version: 6.5 },
 
-  // 5-star characters
   { id: "jean", name: "Jean", rarity: 5, nation: "Mondstadt", element: "Anemo", weapon: "Sword", version: 1.0 },
   { id: "diluc", name: "Diluc", rarity: 5, nation: "Mondstadt", element: "Pyro", weapon: "Claymore", version: 1.0 },
   { id: "qiqi", name: "Qiqi", rarity: 5, nation: "Liyue", element: "Cryo", weapon: "Sword", version: 1.0 },

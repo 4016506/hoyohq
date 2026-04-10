@@ -16,9 +16,7 @@ export const HSRDashboard: React.FC = () => {
   useEffect(() => {
     const loadUsers = async () => {
       try {
-        console.log('Attempting to load HSR users from Firebase...');
         const firebaseUsers = await getAllHSRUsers();
-        console.log('Firebase HSR users loaded:', firebaseUsers);
         setUsers(firebaseUsers);
         // Set the first user as current if none is selected
         if (firebaseUsers.length > 0 && !currentUser) {
@@ -28,10 +26,8 @@ export const HSRDashboard: React.FC = () => {
         console.error('Error loading HSR users from Firebase:', error);
         // Fallback to localStorage if Firebase fails
         const savedUsers = localStorage.getItem('hsr-users');
-        console.log('Checking localStorage for HSR users:', savedUsers);
         if (savedUsers) {
           const parsedUsers = JSON.parse(savedUsers);
-          console.log('Parsed localStorage HSR users:', parsedUsers);
           setUsers(parsedUsers);
           if (parsedUsers.length > 0 && !currentUser) {
             setCurrentUser(parsedUsers[0]);
@@ -42,6 +38,8 @@ export const HSRDashboard: React.FC = () => {
     };
 
     loadUsers();
+    // Intentionally run once on mount; do not depend on currentUser.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Save users to localStorage whenever they change (backup)
