@@ -9,7 +9,6 @@ export interface HSRCharacter {
   rarity: Rarity;
   path: Path;
   element: HSRElement;
-  unitType: string;
   version: number;
 }
 
